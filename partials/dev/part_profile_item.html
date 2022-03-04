@@ -1,0 +1,25 @@
+<script type="text/x-handlebars-template" name="part_profile_item" partial-name="part_profile_item">
+	<div class="profile-item">
+		<a href="#" class="profile-title">{{email}}</a>
+		<span> | </span>
+		<a href="/candidates/cvs/download?email={{email}}" class="download-cv">Download CV</a>
+
+		<div class="profile-content">
+			<div class="details">
+				{{#if name}}
+				<span class="name">{{name}}</span>
+				{{/if}}
+
+				{{#if position}}
+				<span>{{position}}</span>
+				{{/if}}
+
+				{{#if company}}
+				<span>{{company}}</span>
+				{{/if}}			
+			</div>
+
+			<p>{{skills}}</p>
+		</div>
+	</div>
+</script>

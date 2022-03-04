@@ -1,0 +1,11 @@
+<script type="text/x-handlebars-template" name="part_results_card" partial-name="part_results_card">
+	<div class="card-item">
+		{{#ifMatches levelOpts toMatch='deepest'}}
+		<h3 class="geopoint" data-geoid="{{locationId}}">{{location}}</h3>
+		{{else}}
+		<a href="#" class="geopoint" data-geoid="{{locationId}}">{{location}}</a>
+		{{/ifMatches}}
+
+		{{> part_results_item}}
+	</div>
+</script>

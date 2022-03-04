@@ -1,0 +1,33 @@
+<script type="text/x-handlebars-template" name="extra_candidates" partial-name="extra_candidates">
+	<div class="body">
+		<div id="ext-wrap" class="container candidates-wrapper">
+			<div class="ext-overview">
+				<a href="#" class="backbtn"><i class="material-icons">keyboard_arrow_left</i></a>
+				<h2>{{locName}}</h2>
+				<a href="#" class="switch-view list">
+					<i class="material-icons list">view_list</i>
+					<i class="material-icons chart">insert_chart</i>
+				</a>
+			</div>
+
+			<div id="tabs-wrapper" class="options-container show">
+				{{> mod_tabs}}
+			</div>
+
+			<div class="contents">
+				<div class="scrollable">
+					<div id="perspective-wrap" class="mod-wrap">
+					</div>
+
+					<div id="demographics" class="mod-wrap">
+					</div>
+
+					<div id="ethnicity-wrap" class="mod-wrap" style="display: none;">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ext-details" class="container projection-details"></div>
+	</div>
+</script>

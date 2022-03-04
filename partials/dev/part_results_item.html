@@ -1,0 +1,74 @@
+<script type="text/x-handlebars-template" name="part_results_item" partial-name="part_results_item">
+	<ul class="geodata" data-geopoint="{{locationPath}}" data-geoname="{{location}}">
+		<li class="candidates">
+			{{#if candidates}}
+			<a href="#" class="block{{#if region}} is-tooltip{{/if}}">
+				<i class="material-icons">group</i>
+				<span>{{numFormat candidates}}</span>
+				{{#if region}}<p class="bot"><span class="hide-md">Click for </span>Insights</p>{{else}}<p><span class="hide-md">see talent </span>insights</p>{{/if}}
+			</a>
+			{{else}}
+			<div class="block">
+				<i class="material-icons">group</i>
+				<span>{{numFormat candidates}}</span>
+				{{#if region}}<p class="bot">No Candidates</p>{{else}}<p>no candidates</p>{{/if}}
+			</div>
+			{{/if}}
+		</li>
+
+		<li class="salary">
+			<div class="meter">
+				<div class="fill" style="left: {{meterMin salary.min total=max}}%; right: {{meterMax salary.max total=max}}%;"></div>
+			</div>
+			<div class="block">
+				{{#if salary.avg}}
+				<small class="min">
+					<span class="yearly">{{numFormatK salary.min round="floor"}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.min}}</span>
+					{{/has_rate}}
+				</small>
+				<i class="material-icons">trending_up</i>
+				<strong class="hide-md">
+					<span class="yearly">{{numFormat salary.avg entity=currency}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.avg entity=currency}}</span>
+					{{/has_rate}}
+				</strong>
+				<strong class="only-md">
+					<span class="yearly">{{numFormatK salary.avg entity=currency}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.avg entity=currency}}</span>
+					{{/has_rate}}
+				</strong>
+				<i class="material-icons">trending_up</i>
+				<small class="max">
+					<span class="yearly">{{numFormatK salary.max round="ceil"}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.max}}</span>
+					{{/has_rate}}
+				</small>
+				{{#unless region}}<p><span class="hide-md">average</span><span class="only-md">avg.</span> salary</p>{{/unless}}
+				{{else}}
+				<strong>sourcing</strong><small class="help">?</small>
+				{{/if}}
+			</div>
+		</li>
+
+		<li class="jobposts">
+			{{#if jobposts}}
+			<a href="#" class="block{{#if region}} is-tooltip{{/if}}">
+				<i class="material-icons">assignment</i>
+				<span>{{numFormat jobposts}}</span>
+				{{#if region}}<p class="bot"><span class="hide-md">Click for </span>Adverts</p>{{else}}<p><span class="hide-md">see </span>adverts</p>{{/if}}
+			</a>
+			{{else}}
+			<div class="block">
+				<i class="material-icons">assignment</i>
+				<span>0</span>
+				{{#unless region}}<p>no adverts</p>{{/unless}}
+			</div>
+			{{/if}}
+		</li>
+	</ul>
+</script>

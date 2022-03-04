@@ -1,0 +1,1160 @@
+/*
+	    ____         _         __
+	   / __ \ _____ (_)____   / /_
+	  / /_/ // ___// // __ \ / __/
+	 / ____// /   / // / / // /_
+	/_/    /_/   /_//_/ /_/ \__/
+
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym,
+address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead,
+tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+	display: block;
+}
+
+footer, main, section {
+	position: relative;
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif, Arial;
+	color: #333;
+	line-height: 1;
+	font-size: 12pt;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+ol, ul, li {
+	font-size: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#tmpl {
+	display: none;
+}
+
+.generate-txt {
+	display: none;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	font-size: 18px;
+	font-weight: 500;
+	text-align: center;
+	color: #4584C4;
+	margin-top: 40pt;
+	z-index: 9999;
+}
+
+html.failed .generate-txt {
+	font-weight: 500;
+	line-height: 24px;
+	color: #242424;
+	margin: 0;
+	transform: translateY(-50%);
+}
+
+.generate-txt > p {
+	font-size: 16px;
+	font-weight: 400;
+	color: #666;
+	margin: 10px 0 0 0;
+}
+
+/*  General Page Structure  */
+@page {
+	size: 8.5in 11in;
+	margin: 0;
+	padding: 0.4in;
+	background-color: #ffffff;
+}
+
+.page {
+	width: 8.5in;
+	min-height: 11in;
+	padding: 0.4in;
+	background-color: #ffffff;
+}
+
+.subpage {
+	display: inline-block;
+	width: 7.7in;
+	min-height: 10.2in;
+	padding: 0.1in 0.2in 0.2in 0.2in;
+}
+
+/*  Intro Page  */
+.subpage .logo {
+	display: block;
+	width: 5in;
+	height: auto;
+	margin: 2.4in auto 0 auto;
+}
+
+.subpage .logo > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+
+.subpage h1 {
+	display: block;
+	width: 5in;
+	font-size: 26pt;
+	font-weight: 500;
+	line-height: 1.5;
+	text-align: center;
+	color: #fff;
+	margin: 3.2in auto 0 auto;
+	padding: 0.15in 0;
+	border-radius: 4pt;
+	background-color: #4584c4;
+}
+
+/*  Content Pages | Header  */
+.subpage > h2 {
+	font-size: 18pt;
+	font-weight: 500;
+	line-height: 1.5;
+	color: #333;
+	margin-bottom: 0.5in;
+	padding-bottom: 8pt;
+	border-bottom: 1pt solid #cae3f9;
+}
+
+.subpage > h2 > img {
+	float: right;
+	height: 25pt;
+	padding-top: 2pt;
+}
+
+/*  Text Styles  */
+p {
+	font-size: 13pt;
+	font-weight: 300;
+	line-height: 1.5;
+	text-align: center;
+	margin: 0 0 0.4in 0;
+}
+
+p strong {
+	font-weight: 500;
+	color: #0f8cf7;
+}
+
+span.clear {
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+/*  Content Blocks  */
+.search-block.grey {
+	background-color: #fcfbfa;
+}
+
+.search-block.map {
+	display: block;
+	position:  relative;
+	width: 700px;
+	height: 850px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.search-block.map > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+
+/*  Map Legend  */
+.legend {
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	right: -108px;
+	width: 106px;
+	height: 172px;
+	padding: 10px;
+	border-radius: 4px 0 0 4px;
+	background-color: rgba(255, 255, 255, .8);
+	z-index: 999;
+}
+
+.legend,
+.legend.open {
+	-webkit-transition: right .4s ease-in-out;
+	   -moz-transition: right .4s ease-in-out;
+		 -o-transition: right .4s ease-in-out;
+			transition: right .4s ease-in-out;
+}
+
+.legend.open {
+	right: 0px;
+}
+
+.legend h2 {
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.legend .scale {
+	display: inline-block;
+	width: 20px;
+	height: auto;
+}
+
+.scale .point {
+	display: block;
+	position: relative;
+	height: 14px;
+}
+
+.scale .p1 {
+	background-color: #26ab17;
+}
+
+.scale .p2 {
+	background-color: #50c511;
+}
+
+.scale .p3 {
+	background-color: #7ad90c;
+}
+
+.scale .p4 {
+	background-color: #c1f505;
+}
+
+.scale .p5 {
+	background-color: #ffff00;
+}
+
+.scale .p6 {
+	background-color: #ffd100;
+}
+
+.scale .p7 {
+	background-color: #ffae00;
+}
+
+.scale .p8 {
+	background-color: #ff7300;
+}
+
+.scale .p9 {
+	background-color: #ff1500;
+}
+
+.color-text {
+	display: inline-block;
+	position: relative;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 15px;
+	vertical-align: top;
+	margin-left: 6px;
+}
+
+.color-text > span {
+	display: block;
+	position: relative;
+	padding: 40px 0;
+}
+
+
+/*  Search Tag Groups  */
+.search-group,
+.chart-block,
+.breakdown-block {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.search-group,
+.chart-block {
+	width: 100%;
+}
+
+.search-group {
+	margin: .3in 0 0 0;
+}
+
+.chart-block {
+	margin: .3in 0 .2in 0;
+}
+
+.breakdown-block {
+	width: 50%;
+	font-size: 0;
+	text-align: center;
+	vertical-align: top;
+	padding: 0;
+}
+
+.chart-block h3,
+.breakdown-block h3 {
+	font-size: 13pt;
+	line-height: 1.5;
+	text-align: center;
+	margin-bottom: .15in;
+}
+
+.search-group:first-child {
+	margin-top: 0;
+}
+
+.search-group h3 {
+	font-size: 12pt;
+	line-height: 2.4;
+	color: #fff;
+	vertical-align: top;
+	margin: 0;
+	padding: 0 .2in;
+	border: 1pt solid #4584c4;
+	border-bottom: none;
+	border-radius: 4pt 4pt 0 0;
+	background-color: #4584c4;
+}
+
+.search-group.exclude h3 {
+	border: 1pt solid #e64c47;
+	border-bottom: none;
+	background-color: #e64c47;
+}
+
+.group-tag {
+	display: block;
+	position: relative;
+	font-size: 0;
+	padding: .2in .08in .1in .2in;
+	border: 1pt solid #96bfe8;
+	border-top: none;
+	border-radius: 0 0 4pt 4pt;
+}
+
+.exclude .group-tag {
+	border: 1pt solid #e64c47;
+	border-top: none;
+}
+
+.group-tag > span {
+	display: inline-block;
+	position: relative;
+	font-size: 11pt;
+	font-weight: 300;
+	line-height: 1.5;
+	color: #000;
+	vertical-align: top;
+	margin: 0 .12in .08in 0;
+	padding: 0 .12in 0 .14in;
+	border-right: 1pt solid #ccc;
+	border-bottom: 1pt solid #ccc;
+	border-radius: 3pt;
+	background-color: #f3f3f3;
+	cursor: pointer;
+}
+
+/*  Regional Main Result  */
+.overview {
+	display: block;
+	position: relative;
+	width: 7.3in;
+	height: auto;
+	font-size: 0;
+	margin: 0 0 6pt 0;
+	padding: 11pt .1in 0 .1in;
+	border-bottom: 1pt solid #dedede;
+	background-color: #f6f6f6;
+	z-index: 9;
+}
+
+.overview h3 {
+	display: inline-block;
+	font-size: 14pt;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: #454749;
+	margin-bottom: .2in;
+	padding: 0;
+	border: 0;
+}
+
+
+/*  Regional Results  */
+.geodata {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.geodata > li {
+	display: inline-block;
+	position: relative;
+	width: 2.66in;
+	font-size: 0;
+	text-align: center;
+	color: #4c9059;
+	vertical-align: top;
+}
+
+.geodata > li:first-child,
+.geodata > li:last-child {
+	width: 2in;
+}
+
+.geodata > li:first-child {
+	color: #3170a3;
+	padding-left: 0;
+}
+
+.geodata > li:last-child {
+	color: #f9a100;
+	padding-right: 0;
+}
+
+.geodata > li > .block {
+	display: inline-block;
+	position: relative;
+	font-size: 0;
+	text-align: center;
+	text-decoration: none;
+	color: inherit;
+}
+
+.geodata > li > .block > span,
+.geodata > li > .block > strong,
+.geodata > li > .block > small {
+	display: inline-block;
+	position: relative;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: top;
+}
+
+.geodata > li > .block > small.min {
+	vertical-align: bottom;
+}
+
+.geodata > li > .block > span,
+.geodata > li > .block > strong {
+	font-size: 12pt;
+	line-height: 1.5;
+}
+
+.geodata > li > .block > small {
+	font-size: 9pt;
+	line-height: 1.25;
+	color: #333;
+}
+
+.geodata > li > .block > i {
+	width: 17pt;
+	height: 18pt;
+	margin: 0 5px;
+	padding: 0;
+}
+
+.geodata > li > .block > small + i,
+.geodata > li > .block > strong + i {
+	font-size: 12pt;
+	margin: 0 2pt 0 1pt;
+}
+
+.geodata > li > .block > small + i {
+	height: 12pt;
+	vertical-align: bottom;
+}
+
+.geodata > li > .block > strong + i {
+	height: 14pt;
+	vertical-align: top;
+}
+
+.geodata > li:first-child > .block > i,
+.geodata > li:last-child > .block > i {
+	margin: 0 5px 0 0;
+}
+
+.geodata > li > .block > p {
+	display: block;
+	position: relative;
+	width: auto;
+	font-size: 10pt;
+	font-weight: 400;
+	line-height: 1.5;
+	text-decoration: none;
+	text-transform: capitalize;
+	color: #777;
+	margin: 11pt 0 0 0;
+}
+
+
+/*  Separators  */
+.geodata > li > hr,
+.geodata > li > .meter {
+	position: absolute;
+	right: 0;
+	bottom: 18pt;
+	left: 0;
+	width: auto;
+	font-size: 0;
+	margin: 0px 8pt;
+	border-radius: 2pt;
+}
+
+.geodata > li > hr {
+	height: 1pt;
+	margin-bottom: 1pt;
+	border: none;
+	background-color: #e6e6e6;
+}
+
+.geodata > li > .meter {
+	height: 2.5pt;
+	background-color: #ddd;
+}
+
+.geodata > li > .meter > .fill {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border-radius: 2pt;
+	background-color: #4a9258;
+}
+
+
+/*  Card Item  */
+.card-item {
+	display: inline-block;
+	position: relative;
+	width: 6.9in;
+	height: auto;
+	margin: 20pt .2in 3pt .2in;
+	padding: 8pt .1in 6pt .1in;
+	background-color: #fff;
+	border-width: 1pt;
+	border-style: solid;
+	border-color: #f3f3f3 #d9d9d9 #ccc #f0f0f0;
+	border-radius: 3pt;
+}
+
+.card-item:first-child {
+	margin: 0;
+}
+
+.card-item > h3 {
+	font-size: 11pt;
+	font-weight: 400;
+	line-height: 12pt;
+	text-decoration: none;
+	text-transform: capitalize;
+	color: #666;
+}
+
+.card-item > .geodata {
+	margin: 8pt 0 0 0;
+}
+
+.card-item .geodata > li {
+	padding: 0 8pt;
+}
+
+/*  Overview  */
+.overview .geodata {
+    max-width: 7.1in;
+    overflow: hidden;
+}
+
+.overview .geodata > li {
+	display: block;
+	position: relative;
+	width: 2.7in;
+	padding: 7pt .1in;
+	margin: 0 auto;
+	border-left: 1pt solid #fff;
+	border-right: 1pt solid #ccc;
+	vertical-align: top;
+}
+
+.overview .geodata > li:first-child,
+.overview .geodata > li:last-child {
+	position: absolute;
+	top: 0;
+	width: 2.2in;
+}
+
+.overview .geodata > li:first-child {
+	left: 0;
+	color: #3170a3;
+	padding-left: 0;
+	border-left: none;
+}
+
+.overview .geodata > li:last-child {
+	right: 0;
+	color: #f9a100;
+	padding-right: 0;
+	border-right: none;
+}
+
+.overview .geodata > li > .block > span,
+.overview .geodata > li > .block > strong {
+	font-size: 17pt;
+	line-height: 18pt;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, .8);
+}
+
+.overview .geodata > li:first-child > .block > i,
+.overview .geodata > li:last-child > .block > i {
+	position: absolute;
+	top: 22pt;
+	left: 50%;
+	width: 30pt;
+	height: 30pt;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, .8);
+	margin: 0 0 0 -15pt;
+}
+
+.overview .geodata > li > .block > p {
+	font-size: 9pt;
+	line-height: 12pt;
+	text-transform: uppercase;
+	margin-top: 38pt;
+}
+
+.overview .geodata > li > hr,
+.overview .geodata > li > .meter {
+	bottom: 25pt;
+}
+
+.overview .geodata > li > .meter {
+	height: 12pt;
+	margin: 7pt 10pt;
+}
+
+.overview .geodata > li > .meter,
+.overview .geodata > li > .meter > .fill {
+	border-radius: 6pt;
+	box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, .8), inset 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+.overview .geodata > li > hr {
+	display: none;
+}
+
+
+/*
+ *  Demographics Breakdown
+ */
+
+.demographics {
+	font-size: 0;
+}
+
+/*  Gender block  */
+#breakdown {
+	height: 250px;
+	margin: 0;
+}
+
+#experience {
+	height: 230px;
+	margin: 0 0 20px 0;
+}
+
+.gender-block,
+.data {
+	display: inline-block;
+	position: relative;
+	height: 210px;
+	font-size: 0;
+	vertical-align: top;
+}
+
+.gender-block {
+	background-color: #d3d3d3;
+}
+
+.gender-block.male > .fill {
+	background-color: #765fbb;
+}
+
+.gender-block.female > .fill {
+	background-color: #00c4aa;
+}
+
+.gender-block > .fill {
+	display: block;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.gender-block > img {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	height: 100%;
+}
+
+.data {
+	width: 100px;
+}
+
+.data .data-male,
+.data .data-female {
+	position: relative;
+	width: 100%;
+	height: 105px;
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 24px;
+	text-align: center;
+	padding: 32px 0;
+}
+
+.data .data-male {
+	color: #765fbb;
+}
+
+.data .data-female {
+	color: #00c4aa;
+}
+
+.data .data-male:after,
+.data .data-female:after {
+	display: block;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 1px;
+	line-height: 16px;
+	color: #333;
+}
+
+.data .data-male:after {
+	content: 'male';
+}
+
+.data .data-female:after {
+	content: 'female';
+}
+
+
+/*  Experience block  */
+.exp-block {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 175px;
+	font-size: 0;
+	vertical-align: top;
+	margin-top: 15px;
+}
+
+.exp-block:after,
+.exp-block > .row > span {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.exp-block:after {
+	bottom: -20px;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 1px;
+	line-height: 18px;
+	color: #333;
+}
+
+.exp-block.jr:after {
+	content: '0-3 years';
+}
+
+.exp-block.md:after {
+	content: '4-7 years';
+}
+
+.exp-block.sr:after {
+	content: '8+ years';
+}
+
+.exp-block > .row {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.exp-block > .row > span {
+	top: -26px;
+	font-size: 22px;
+	line-height: 26px;
+}
+
+.exp-block.jr > .row > span {
+	color: #765fbb;
+}
+
+.exp-block.md > .row > span {
+	color: #4584c4;
+}
+
+.exp-block.sr > .row > span {
+	color: #00c4aa;
+}
+
+.exp-block > .row > .col {
+	display: block;
+	width: 40px;
+	height: 100%;
+	margin: 0 auto;
+	border-radius: 3px 3px 0 0;
+}
+
+.exp-block.jr > .row > .col {
+	background-color: #765fbb;
+}
+
+.exp-block.md > .row > .col {
+	background-color: #4584c4;
+}
+
+.exp-block.sr > .row > .col {
+	background-color: #00c4aa;
+}
+
+
+i.icon {
+	display: inline-block;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+i.icon.group {
+	background-image: url(https://s3.eu-west-2.amazonaws.com/horsefly-web/icons/group.png);
+}
+
+i.icon.assignment {
+	background-image: url(https://s3.eu-west-2.amazonaws.com/horsefly-web/icons/assignment.png);
+}
+
+i.icon.trending_up {
+	background-image: url(https://s3.eu-west-2.amazonaws.com/horsefly-web/icons/trending_up.png);
+}
+
+i.icon.cloud_download {
+	background-image: url(https://s3.eu-west-2.amazonaws.com/horsefly-web/icons/cloud_download.png);
+}
+
+.overview .block i.icon.group {
+	background-size: 34px auto;
+}
+
+.card-item .block i.icon.group {
+	background-size: 24px auto;
+}
+
+.overview .block i.icon.assignment {
+	background-size: 28px auto;
+}
+
+.card-item .block i.icon.assignment {
+	background-size: 20px auto;
+}
+
+.overview .block i.icon.trending_up,
+.card-item .block i.icon.trending_up {
+	background-size: 16px auto;
+}
+
+.highcharts-label .tree-label > span {
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	text-align: center;
+}
+
+.highcharts-label .tree-label > span.value {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+/*  Associated data  */
+#associated {
+	font-size: 0;
+}
+
+ul.table {
+	display: inline-block;
+	position: relative;
+	width: 2.34in;
+	height: auto;
+	min-height: 2in;
+	font-size: 0;
+	vertical-align: top;
+	border: 1pt solid #999;
+	border-top: none;
+	border-radius: 4pt;
+	margin: 0 0.14in 0 0;
+	overflow: hidden;
+}
+
+ul.table > li {
+	display: block;
+	font-size: 10pt;
+	font-weight: 300;
+	line-height: 12pt;
+	text-transform: capitalize;
+	color: #333;
+	border-bottom: 1pt solid #999;
+	padding: 8pt 5pt;
+}
+
+ul.table li.head {
+	font-size: 11pt;
+	font-weight: 400;
+	line-height: 14pt;
+	text-align: center;
+	color: #fff;
+	border-radius: 4pt 4pt 0 0;
+	background-color: #333;
+}
+
+ul.table > li.head,
+ul.table > li:last-child {
+	border-bottom: none;
+}
+
+ul.table:last-child {
+	margin: 0;
+}
+
+
+@keyframes rotate {
+	0%   { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+
+@media screen {
+	body {
+		background-color: #e3e3e3;
+	}
+
+	html.generate,
+	html.generate > body,
+	html.failed,
+	html.failed > body {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	html.generate .generate-txt,
+	html.failed .generate-txt {
+		display: block;
+	}
+
+	.page {
+		margin: 0.4in auto;
+		border-radius: 4px;
+		box-shadow: 1px 1px 6px rgba(0, 0, 0, .2);
+	}
+
+	.export-actions {
+		display: block;
+		position: fixed;
+		bottom: 20px;
+		left: 50%;
+		width: 80px;
+		height: auto;
+		text-align: center;
+		margin-left: -40px;
+		padding: 5px 0;
+		border-radius: 6px;
+		background-color: rgba(0, 0, 0, .6);
+		z-index: 99;
+	}
+
+	.export-actions:hover {
+		background-color: rgba(0, 0, 0, .9);
+	}
+
+	.export-actions a {
+		display: inline-block;
+		width: 100%;
+		font-size: 20px;
+		line-height: 30px;
+		text-align: center;
+		text-decoration: none;
+		color: #fff;
+		border-radius: 4px;
+	}
+
+	.export-actions a > i {
+		width: 40px;
+		height: 30px;
+		vertical-align: top;
+		background-size: 30px auto;
+	}
+
+	.loading:before,
+	.loading:after {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 99;
+	}
+
+	.loading:before {
+		top: 44pt;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: #fff;
+		opacity: 0.8;
+	}
+
+	.loading:after {
+		top: 65%;
+		left: 50%;
+		width: 40pt;
+		height: 40pt;
+		margin: -20pt 0 0 -20pt;
+		border: 2pt solid #4584C4;
+		border-right-color: transparent;
+		border-radius: 50%;
+		animation: rotate 0.8s infinite linear;
+	}
+
+	html.generate > body:before,
+	html.generate > body:after,
+	html.failed > body:before {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 999;
+	}
+
+	html.failed > body:after {
+		display: none;
+	}
+
+	html.generate > body:before,
+	html.failed > body:before {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: #fff;
+		opacity: 1;
+	}
+
+	html.generate > body:after {
+		top: 50%;
+		left: 50%;
+		width: 40pt;
+		height: 40pt;
+		margin: -20pt 0 0 -20pt;
+		border: 2pt solid #4584C4;
+		border-right-color: transparent;
+		border-radius: 50%;
+		animation: rotate 0.8s infinite linear;
+	}
+}
+
+@media print {
+	body {
+		background-color: #ffffff;
+	}
+
+	.page {
+		margin: 0;
+		page-break-before: always;
+	}
+
+	.subpage {
+		display: block;
+	}
+
+	.search-block {
+		page-break-after: auto;
+	}
+
+	.search-group,
+	.card-item,
+	.chart-block {
+		display: block;
+		page-break-inside: avoid;
+		page-break-after: auto;
+	}
+
+	.chart-block h3 {
+		margin: .2in 0;
+	}
+
+	.export-actions {
+		display: none;
+	}
+
+	.legend {
+		display: inline-block;
+	}
+}

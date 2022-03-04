@@ -1,0 +1,29 @@
+<script type="text/x-handlebars-template" name="view_search_upload" partial-name="view_search_upload">
+	<div class="contents">
+		<div class="scrollable search-scroll pad-ew-xs">
+			<form accept-charset="UTF-8" enctype="multipart/form-data" name="form-upload" id="form-upload" novalidate="novalidate">
+				<div class="file-box">
+					<input type="file" id="cv" name="cv" accept="application/zip">
+
+					<span class="name-upload"></span>
+
+					<div class="btn-upload-block">
+						<a href="#" class="btn green disabled" id="btn-upload">
+							<i class="material-icons">file_upload</i> Upload now
+						</a>
+					</div>
+
+					<span class="note-upload">Did you select the wrong file?</span>
+
+					<label for="cv">
+						<i class="material-icons">folder</i> Browse a file to upload
+					</label>
+
+					<span id="error-upload" class="status error"></span>
+				</div>
+			</form>
+
+			<div id="response-msg" class="response"></div>
+		</div>
+	</div>
+</script>

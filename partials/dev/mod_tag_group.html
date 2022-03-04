@@ -1,0 +1,22 @@
+<script type="text/x-handlebars-template" name="mod_tag_group" partial-name="mod_tag_group">
+	<div id="tag-group-{{groupId}}" class="tag-group-wrapper mod-wrap loading">
+		<div class="tag-group-options">
+			<h3>Search Group Options</h3>
+
+			<div class="in-out-toggle">
+				<label for="tag-toggle-{{groupId}}">Include<span class="hide-sm"> terms</span></label>
+				<input type="checkbox" id="tag-toggle-{{groupId}}" class="toggle-input" checked>
+				<label for="tag-toggle-{{groupId}}" class="switch"></label>
+				<label for="tag-toggle-{{groupId}}">Exclude<span class="hide-sm"> terms</span></label>
+			</div>
+
+			<a href="#" class="link red hfloat-e" id="tag-remove-{{groupId}}">
+				<i class="material-icons">remove_circle</i>Discard
+			</a>
+		</div>
+
+		<input type="text" id="tag-list-{{groupId}}" class="input-default tag-list" placeholder="Search keywords" />
+
+		<div id="tag-suggestions-{{groupId}}" class="tag-suggestions"></div>
+	</div>
+</script>

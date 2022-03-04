@@ -1,0 +1,25 @@
+<script type="text/x-handlebars-template" name="mod_loc_group" partial-name="mod_loc_group">
+	<div id="loc-group-{{groupId}}" class="input-row loc-group-wrapper mod-wrap loading">
+		{{#if groupId}}
+		<div class="loc-group-options halign-e">
+			<a href="#" class="link red" id="loc-remove-{{groupId}}">
+				<i class="material-icons">remove_circle</i>Discard
+			</a>
+		</div>
+		{{/if}}
+
+		<div class="input-default input-md">
+			<select id="search-country-{{groupId}}" name="search-country-{{groupId}}" placeholder="Country">
+			</select>
+		</div>
+
+		<div class="input-default input-xl">
+			<input type="text" id="search-location-{{groupId}}" name="search-location-{{groupId}}" placeholder="Location">
+		</div>
+
+		<div class="input-default input-sm">
+			<select id="search-radius-{{groupId}}" name="search-radius-{{groupId}}" placeholder="Radius" disabled>
+			</select>
+		</div>
+	</div>
+</script>

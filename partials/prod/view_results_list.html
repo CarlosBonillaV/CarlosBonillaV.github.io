@@ -1,0 +1,31 @@
+<script type="text/x-handlebars-template" name="view_results_list" partial-name="view_results_list">
+	{{> part_results_overview overview region=false max=maxTotal}}
+
+	<div id="nav-wrapper" class="options-container{{#if regions}} show{{/if}}">
+		{{#has_rate}}
+		<div class="toggle-salary">
+			<span>Annual Salary</span>
+			<input type="checkbox" id="switch" value="show-rate">
+			<label for="switch">Toggle</label>
+			<span>Daily Rate</span>
+		</div>
+		{{/has_rate}}
+	</div>
+
+	<div class="contents">
+		<div class="scrollable">
+			<div id="result-list" class="regions">
+				{{#each regions}}
+					{{> part_results_card region=true max=../maxTotal}}
+				{{else}}
+					<div class="empty">
+						<span>
+							No matching results!<br/>
+							Please contact us using the chat box on the bottom right if you need our help!
+						</span>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</script>

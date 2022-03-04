@@ -1,0 +1,91 @@
+<script type="text/x-handlebars-template" name="modal_exportPDF" partial-name="modal_exportPDF">
+	<div class="m-head">
+		<h3 class="halign-c">Export to PDF</h3>
+		<a href="#" class="x-close-btn m-close">x</a>
+	</div>
+
+	<div class="m-body">
+		<h4>Search Results</h4>
+
+		<div class="filter-block col-3">
+			<label class="custom-check" for="add-terms">
+				<input type="checkbox" name="addToPDF" id="add-terms" value="terms" checked="">
+				<div class="check-indicator"></div>
+				<span>Search Terms</span>
+			</label>
+
+			<label class="custom-check" for="add-mapdata">
+				<input type="checkbox" name="addToPDF" id="add-mapdata" value="mapdata">
+				<div class="check-indicator"></div>
+				<span>Map Results</span>
+			</label>
+
+			<label class="custom-check" for="add-results">
+				<input type="checkbox" name="addToPDF" id="add-results" value="results" checked="">
+				<div class="check-indicator"></div>
+				<span>Results by Region</span>
+			</label>
+
+			<span class="warning">Please note. To download a PDF with map results, you need to allow browser pop ups.</span>
+		</div>
+
+		<h4>Regional Charts</h4>
+
+		<div class="filter-block col-2">
+			<label class="custom-check" for="add-chart-demand">
+				<input type="checkbox" name="addToPDF" id="add-chart-demand" value="chart-demand" checked="">
+				<div class="check-indicator"></div>
+				<span>Supply and demand</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-breakdown">
+				<input type="checkbox" name="addToPDF" id="add-chart-breakdown" value="chart-breakdown" checked="">
+				<div class="check-indicator"></div>
+				<span>Demographics breakdown</span>
+			</label>
+
+			<label class="hidden" for="add-chart-ethnicity">
+				<input type="checkbox" name="addToPDF" id="add-chart-ethnicity" value="chart-ethnicity" checked="">
+			</label>
+
+			<label class="custom-check" for="add-chart-schools">
+				<input type="checkbox" name="addToPDF" id="add-chart-schools" value="chart-schools" checked="">
+				<div class="check-indicator"></div>
+				<span>Top graduate universities</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-jobTitles">
+				<input type="checkbox" name="addToPDF" id="add-chart-jobTitles" value="chart-jobTitles" checked="">
+				<div class="check-indicator"></div>
+				<span>Top associated job titles</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-companies">
+				<input type="checkbox" name="addToPDF" id="add-chart-companies" value="chart-companies" checked="">
+				<div class="check-indicator"></div>
+				<span>Top companies who hire this profile</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-hardSkills">
+				<input type="checkbox" name="addToPDF" id="add-chart-hardSkills" value="chart-hardSkills" checked="">
+				<div class="check-indicator"></div>
+				<span>Top associated keywords</span>
+			</label>
+		</div>
+
+		<h4>Associated Data</h4>
+
+		<div class="filter-block col-1">
+			<label class="custom-check" for="add-associated">
+				<input type="checkbox" name="addToPDF" id="add-associated" value="associated" checked="">
+				<div class="check-indicator"></div>
+				<span>Companies who hire similar candidates, related job titles and skills</span>
+			</label>
+		</div>
+	</div>
+
+	<div class="m-foot halign-e">
+		<a href="#" class="btn gray m-close">Cancel</a>
+		<a href="#" class="btn blue" id="make-pdf-preview">Generate preview</a>
+	</div>
+</script>

@@ -1,0 +1,37 @@
+<script type="text/x-handlebars-template" name="view_search_build" partial-name="view_search_build">
+	<div class="contents">
+		<div class="scrollable search-scroll pad-ew-xs">
+			<h2 class="section-title" id="search-title">New Search</h2>
+
+			{{> mod_select_currency}}
+
+			{{> part_dropmenu_filter}}
+
+			<div id="loc-groups" class="input-row">
+			</div>
+
+			{{#if_multi}}
+			<a href="#" class="btn green" id="create-loc-group">
+				<i class="material-icons">add_location</i>Add location
+			</a>
+			{{/if_multi}}
+
+			<div id="tag-groups" class="input-row">
+			</div>
+
+			<a href="#" class="btn green disabled" id="create-tag-group">
+				<i class="material-icons">playlist_add</i>Add search group
+			</a>
+		</div>
+	</div>
+
+	<div class="button-panel" id="search-actions">
+		<a href="#" class="btn gray" data-action="reset">
+			<i class="material-icons">undo</i>Discard<span class="hide-xs"> search</span>
+		</a>
+
+		<a href="#" class="btn blue" data-action="explore">
+			<i class="material-icons">location_searching</i>Explore<span class="hide-xs"> Results</span>
+		</a>
+	</div>
+</script>

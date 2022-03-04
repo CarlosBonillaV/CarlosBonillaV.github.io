@@ -1,0 +1,18 @@
+{
+	"name": "Horsefly",
+	"version": "1.0.0",
+	"description": "Horsefly Analytics",
+	"company": "JobsTheWord",
+	"devDependencies": {
+		"grunt": "1.0.x",
+		"grunt-contrib-concat": "1.0.x",
+		"grunt-contrib-cssmin": "2.2.x",
+		"grunt-contrib-jshint": "1.1.x",
+		"grunt-contrib-uglify": "3.0.x",
+		"grunt-contrib-watch": "1.0.x",
+		"grunt-text-replace": "0.4.x"
+	},
+	"dependencies": {
+		"grunt-cli": "^1.4.3"
+	}
+}

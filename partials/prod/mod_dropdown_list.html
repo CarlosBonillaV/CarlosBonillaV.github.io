@@ -1,0 +1,16 @@
+<script type="text/x-handlebars-template" name="mod_dropdown_list" partial-name="mod_dropdown_list">
+	<ul id="{{ddlId}}" class="options-dropdown">
+		<li class="with-child">
+			<h6>{{ddlName}}
+				<i class="material-icons open">expand_more</i>
+				<i class="material-icons close">expand_less</i>
+			</h6>
+			
+			<ul class="child-list">
+				{{#each ddlItems}}
+					{{> part_ddl_item}}
+				{{/each}}
+			</ul>
+		</li>
+	</ul>
+</script>

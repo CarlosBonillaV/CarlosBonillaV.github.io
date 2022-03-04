@@ -1,0 +1,118 @@
+/*
+	   ______ _____ _____    ____                     __
+	  / ____// ___// ___/   / __ \ ___   _____ ___   / /_
+	 / /     \__ \ \__ \   / /_/ // _ \ / ___// _ \ / __/
+	/ /___  ___/ /___/ /  / _, _//  __/(__  )/  __// /_
+	\____/ /____//____/  /_/ |_| \___//____/ \___/ \__/
+
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym,
+address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead,
+tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+	display: block;
+}
+
+footer, main, section {
+	position: relative;
+}
+
+body {
+	font-family: 'Roboto', sans-serif, 'Helvetica Neue', Arial;
+	color: #333;
+	line-height: 1;
+	background-color: #fff;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+ol, ul, li {
+	font-size: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+header > *,
+#sidebar > * {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+}
+
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../fonts/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+		 local('MaterialIcons-Regular'),
+		 url(../fonts/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+		 url(../fonts/iconfont/MaterialIcons-Regular.woff) format('woff'),
+		 url(../fonts/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+	display: inline-block;
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	font-weight: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}

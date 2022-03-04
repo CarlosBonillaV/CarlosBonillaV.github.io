@@ -1,0 +1,193 @@
+/*
+	   ______ __ _        __           __     __
+	  / ____// /(_)_____ / /__ ____ _ / /_   / /___
+	 / /    / // // ___// //_// __ `// __ \ / // _ \
+	/ /___ / // // /__ / ,<  / /_/ // /_/ // //  __/
+	\____//_//_/ \___//_/|_| \__,_//_.___//_/ \___/
+
+ */
+
+
+/*  
+ *  Buttons and anchors | Structure
+ */
+
+a.link,
+.btn {
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+}
+
+a.link {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	color: #646464;
+}
+
+a.link:hover {
+	color: #222;
+}
+
+a.link.sortable:after {
+	content: '';
+	display: inline-block;
+	width: 0;
+	height: 0;
+	vertical-align: top;
+	margin-top: 7px;
+	margin-left: 7px;
+	border-top: 6px solid #646464;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	-webkit-transform-origin: 50%;
+		-ms-transform-origin: 50%;
+			transform-origin: 50%;
+	-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+			transform: rotate(0deg);
+}
+
+a.link.sortable.desc:after {
+	-webkit-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+			transform: rotate(180deg);
+}
+
+.btn {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 22px;
+	padding: 8px 12px;
+	border-radius: 4px;
+	border: none;
+	letter-spacing: 0.6px;
+}
+
+
+/*  
+ *  Buttons and anchors | Colors
+ */
+
+/*  Red  */
+a.link.red {
+	color: #e64c47;
+}
+
+a.link.red:hover {
+	color: #d22f2a;
+}
+
+.btn.red {
+	color: #fff;
+	background-color: #e64c47;
+}
+
+.btn.red:hover {
+	background-color: #d22f2a;
+}
+
+/*  Blue  */
+a.link.blue {
+	color: #4584c4;
+}
+
+a.link.blue:hover {
+	color: #3874b1;
+}
+
+.btn.blue {
+	color: #fff;
+	background-color: #4584c4;
+}
+
+.btn.blue:hover {
+	background-color: #3874b1;
+}
+
+/*  Gray  */
+a.link.gray {
+	color: #9d9fa0;
+}
+
+a.link.gray:hover {
+	color: #898e90;
+}
+
+.btn.gray {
+	color: #fff;
+	background-color: #9d9fa0;
+}
+
+.btn.gray:hover {
+	background-color: #898e90;
+}
+
+/*  Green  */
+a.link.green {
+	color: #5caf5f;
+}
+
+a.link.green:hover {
+	color: #4c9c4f;
+}
+
+.btn.green {
+	color: #fff;
+	background-color: #5caf5f;
+}
+
+.btn.green:hover {
+	background-color: #4c9c4f;
+}
+
+/*  Disabled  */
+.btn.disabled, .btn.disabled:hover {
+	color: #fff;
+	box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .1);
+	background-color: #c2c2c2;
+	cursor: not-allowed;
+}
+
+
+/*  Buttons and anchors | Icons  */
+a.link > i {
+	font-size: 18px;
+	line-height: inherit;
+	vertical-align: top;
+	color: inherit;
+	margin-right: 4px;
+}
+
+.btn > i {
+	font-size: 18px;
+	line-height: inherit;
+	font-weight: 300;
+	color: inherit;
+	vertical-align: top;
+	margin-right: 6px;
+}
+
+
+/*  
+ *  Buttons and anchors | Groups
+ */
+
+.button-set {
+	position: relative;
+	display: inline-block;
+	margin: 10px 0;
+}
+
+.button-panel > a,
+.button-set > a {
+	margin-right: 20px;
+}
+
+.button-panel > a:last-child,
+.button-panel > a:only-child,
+.button-set > a:last-child,
+.button-set > a:only-child {
+	margin-right: 0;
+}

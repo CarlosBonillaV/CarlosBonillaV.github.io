@@ -1,0 +1,62 @@
+<script type="text/x-handlebars-template" name="mod_data_breakdown" partial-name="mod_data_breakdown">
+	<div class="gender-breakdown">
+		<h3>Gender Breakdown</h3>
+
+		{{#ifIsTotal gender.[1] total=gender.[2]}}
+		<div class="gender-block male">
+			<div class="fill" style="top: 100%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/male.svg">
+		</div>
+
+		<div class="data">
+			<div class="data-male">N/A</div>
+			<div class="data-female">N/A</div>
+		</div>
+
+		<div class="gender-block female">
+			<div class="fill" style="top: 100%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/female.svg">
+		</div>
+		{{else}}
+		<div class="gender-block male">
+			<div class="fill" style="top: {{pctRoundFill gender.[1] total=gender.[2]}}%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/male.svg">
+		</div>
+
+		<div class="data">
+			<div class="data-male">{{pctRound gender.[1] total=gender.[2]}}%</div>
+			<div class="data-female">{{pctRound gender.[0] total=gender.[2]}}%</div>
+		</div>
+
+		<div class="gender-block female">
+			<div class="fill" style="top: {{pctRoundFill gender.[0] total=gender.[2]}}%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/female.svg">
+		</div>
+		{{/ifIsTotal}}
+	</div>
+
+	<div class="experience-breakdown">
+		<h3>Experience Breakdown</h3>
+
+		<div class="exp-block jr">
+			<div class="row" style="top: {{pctRoundFill exp.[0] total=exp.[3]}}%">
+				<span>{{pctRound exp.[0] total=exp.[3]}}%</span>
+				<div class="col"></div>
+			</div>
+		</div>
+
+		<div class="exp-block md">
+			<div class="row" style="top: {{pctRoundFill exp.[1] total=exp.[3]}}%">
+				<span>{{pctRound exp.[1] total=exp.[3]}}%</span>
+				<div class="col"></div>
+			</div>
+		</div>
+
+		<div class="exp-block sr">
+			<div class="row" style="top: {{pctRoundFill exp.[2] total=exp.[3]}}%">
+				<span>{{pctRound exp.[2] total=exp.[3]}}%</span>
+				<div class="col"></div>
+			</div>
+		</div>
+	</div>
+</script>

@@ -1,0 +1,24 @@
+<script type="text/x-handlebars-template" name="mod_projection_details" partial-name="mod_projection_details">
+	<div class="overview">
+		<a href="#" class="closepane"><i class="material-icons">keyboard_arrow_left</i></a>
+		<h2 class="title">{{#ifMatches projectionType toMatch='companies'}}Companies{{else}}Job Titles{{/ifMatches}} Projection</h2>
+		<ul class="time-dir past">
+			<li>
+				<a href="#" data-type="{{projectionType}}" data-value="{{projectionValue}}" data-dir="past"><i class="material-icons">restore</i>Show Past</a>
+			</li>
+
+			<li>
+				<a href="#" data-type="{{projectionType}}" data-value="{{projectionValue}}" data-dir="future">Show Future<i class="material-icons">update</i></a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="contents">
+		<div class="scrollable">
+			<p class="note">Please note this is a beta release and some nodes may display sparse data</p>
+
+			<div class="projection-detailed" id="projection-wrap">
+			</div>
+		</div>
+	</div>
+</script>

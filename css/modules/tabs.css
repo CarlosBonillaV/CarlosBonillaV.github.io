@@ -1,0 +1,56 @@
+/*
+	  ______        __
+	 /_  __/____ _ / /_   _____
+	  / /  / __ `// __ \ / ___/
+	 / /  / /_/ // /_/ /(__  )
+	/_/   \__,_//_.___//____/
+
+*/
+
+
+/*  Default  */
+.tabs {
+	display: block;
+	position: relative;
+	height: auto;	
+}
+
+.controls > .tabs {
+	padding: 16px 0 10px 20px;
+}
+
+.options-container > .tabs {
+	margin: 0 auto;
+	padding: 9px 0 9px 0;
+	text-align: center;
+}
+
+.tabs > li {
+	display: inline-block;
+	position: relative;
+	text-transform: uppercase;
+	margin: 0 20px 0 0;
+}
+
+.tabs > li:last-child {
+	margin: 0;
+}
+
+.tabs > li > a {
+	display: block;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 22px;
+	text-decoration: none;
+	color: #888;
+}
+
+.tabs > li > a:hover {
+	color: #464646;
+}
+
+.tabs > li.active > a,
+.tabs > li.active > a:hover {
+	color: #343638;
+	cursor: default;
+}

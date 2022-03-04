@@ -1,0 +1,18 @@
+<script type="text/x-handlebars-template" name="mod_search_filters" partial-name="mod_search_filters">
+	<label class="custom-check" for="checkAll">
+		<input type="checkbox" name="checkAll[]" id="checkAll" value="checkAll">
+		<div class="check-indicator"></div>
+	</label>
+
+	<div class="input-invisible input-lg">
+		<input type="text" id="filter-input" name="filter-input" placeholder="Type to filter">
+	</div>
+
+	<a href="#action" class="link sortable" id="sort-name" data-action="sort">Sort by name</a>
+
+	<div class="button-set hfloat-e">
+		<a href="#action" class="btn red" id="delete-selected" data-action="delete" style="display: none;">
+			<i class="material-icons">delete</i>Delete <span>0</span>
+		</a>
+	</div>
+</script>

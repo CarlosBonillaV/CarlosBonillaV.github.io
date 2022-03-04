@@ -1,0 +1,49 @@
+<!-- @(userType: Int, alertCode: Int, uuid: String) -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<title>Horsefly | Powered by JobsTheWord</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png?v={timestamp}">
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png?v={timestamp}">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png?v={timestamp}">
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' />
+		<link rel="stylesheet" href='https://api.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' />
+		<link rel="stylesheet" href="css/common/reset.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/common/animation.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/common/header.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/common/structure.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/common/clickable.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/common/form.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/modules/tabs.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/modules/map.css?v={timestamp}"/>
+		<link rel="stylesheet" href="css/modules/results.css?v={timestamp}"/>
+
+		<script>
+			window.version={timestamp};
+			window.notAlone=@alertCode;
+			window.uuid='@uuid';
+		</script>
+	</head>
+
+	<body>
+		<div id="horsefly-app"></div>
+
+		<div id="modal" role="dialog" tabindex="-1" aria-hidden="true" class="m-m"></div>
+
+		<div class="backdrop"></div>
+
+		<script src="js/vendor/jquery-3.2.1.min.js"></script>
+		<script src="js/vendor/LAB.min.js"></script>
+		<script src="js/helpers/uad.js?v={timestamp}"></script>
+		<script src="js/startup.dev.js?v={timestamp}"></script>
+		<script async src="js/vendor/tinymce/tinymce.min.js?v={timestamp}"></script>
+		<script async src="js/vendor/html2canvas.min.js?v={timestamp}"></script>
+		<script async src="js/vendor/raphael.js?v={timestamp}"></script>
+		<script async src="js/vendor/Treant.js?v={timestamp}"></script>
+	</body>
+</html>

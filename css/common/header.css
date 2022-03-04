@@ -1,0 +1,118 @@
+/*
+	    __  __                  __
+	   / / / /___   ____ _ ____/ /___   _____
+	  / /_/ // _ \ / __ `// __  // _ \ / ___/
+	 / __  //  __// /_/ // /_/ //  __// /
+	/_/ /_/ \___/ \__,_/ \__,_/ \___//_/
+
+*/
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	min-width: 320px;
+	min-height: 50px;
+	background-color: #121212;
+	box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, .2);
+	z-index: 9;
+}
+
+
+/* HEADER | Logo */
+header .logo {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	height: 26px;
+	margin: 12px 0 0 10px;
+}
+
+header .logo > img {
+	width: auto;
+	height: 100%;
+}
+
+header ul.navigation {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+}
+
+header ul.navigation > li {
+	display: inline-block;
+	position: relative;
+	font-size: 14px;
+	line-height: 24px;
+	text-decoration: none;
+	color: #ddd;
+	padding: 13px 24px 13px 12px;
+}
+
+header ul.navigation > li:hover {
+	color: #fff;
+	background-color: #222;
+}
+
+header ul.navigation > li > ul {
+	display: none;
+}
+
+header ul.navigation > li.has-child:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 4px 3px 0 3px;
+	border-color: transparent;
+	border-top-color: inherit;
+	transform: translateY(-50%);
+}
+
+header ul.navigation > li.has-child > ul.submenu {
+	display: none;
+	position: absolute;
+	top: 50px;
+	width: 160px;
+	right: 0;
+	text-align: left;
+	padding: 14px 14px 10px 14px;
+	border-radius: 0 0 0 5px;
+	background-color: #222;
+}
+
+header ul.navigation > li.has-child:hover > ul.submenu {
+	display: inline-block;
+}
+
+header ul.navigation > li.has-child > ul.submenu li {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	margin-bottom: 12px;
+}
+
+header ul.navigation > li.has-child > ul.submenu li:last-child {
+	margin-bottom: 0;
+}
+
+header ul.navigation > li.has-child > ul.submenu li > a {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.25;
+	text-decoration: none;
+	color: #dedede;
+}
+
+header ul.navigation > li.has-child > ul.submenu li > a:hover {
+	color: #fff;
+}

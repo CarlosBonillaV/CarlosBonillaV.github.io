@@ -1,0 +1,887 @@
+<script type="text/x-handlebars-template" name="base_simple" partial-name="base_simple">
+	<div class="body">
+		<div id="base-contents" class="container view-results"></div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="base_tabs" partial-name="base_tabs">
+	<div class="head">
+		<div id="base-controls" class="controls">
+			{{> mod_tabs}}
+		</div>
+	</div>
+ 
+	<div class="body">
+		<div id="base-contents" class="container"></div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="extra_candidates" partial-name="extra_candidates">
+	<div class="body">
+		<div id="ext-wrap" class="container candidates-wrapper">
+			<div class="ext-overview">
+				<a href="#" class="backbtn"><i class="material-icons">keyboard_arrow_left</i></a>
+				<h2>{{locName}}</h2>
+				<a href="#" class="switch-view list">
+					<i class="material-icons list">view_list</i>
+					<i class="material-icons chart">insert_chart</i>
+				</a>
+			</div>
+
+			<div id="tabs-wrapper" class="options-container show">
+				{{> mod_tabs}}
+			</div>
+
+			<div class="contents">
+				<div class="scrollable">
+					<div id="perspective-wrap" class="mod-wrap">
+					</div>
+
+					<div id="demographics" class="mod-wrap">
+					</div>
+
+					<div id="ethnicity-wrap" class="mod-wrap" style="display: none;">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ext-details" class="container projection-details"></div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="extra_jobposts" partial-name="extra_jobposts">
+	<div class="body">
+		<div id="ext-wrap" class="container jobposts-wrapper">
+			{{> part_jobposts_list}}
+		</div>
+
+		<div id="ext-details" class="container jobpost-details"></div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="extra_wammee" partial-name="extra_wammee">
+	<div class="body">
+		<div id="ext-wrap" class="container wammee-wrapper">
+			<div class="ext-overview">
+				<a href="#" class="backbtn"><i class="material-icons">keyboard_arrow_left</i></a>
+				{{{imageHelper 'wammee' 'Wammee'}}}
+			</div>
+
+			<div class="contents">
+				<div class="scrollable">
+					<h2>Market your opportunity to {{#ifMatches country toMatch='uk'}}<strong>{{numFormat candidates}}</strong>{{/ifMatches}} matching candidates</h2>
+					<small>Please note all searches are quality checked by our in-house experts.</small>
+
+					<form accept-charset="UTF-8" action="/companies/campaigns/preview" id="form-campaign-preview" name="form-campaign-add" autocomplete="on" method="post" target="_blank">
+						<div class="input-row">
+							<div class="input-default input-xxl">
+								<input type="text" name="title" id="wammee_title" placeholder="Position Name">
+								<span class="initial"></span>
+							</div>
+
+							<div class="input-default input-mds">
+								<select id="hireType" name="hireType" placeholder="Hire Type">
+									<option value="0">Permanent</option>
+									<option value="1">Contract</option>
+									<option value="2">Freelance</option>
+								</select>
+							</div>
+
+							<div class="input-default input-mds">
+								<select id="hours" name="hours" placeholder="Hours">
+									<option value="0">Full-Time</option>
+									<option value="1">Part-Time</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="input-row">
+							<div class="input-default input-xxl">
+								<input type="text" id="originalLocation" name="originalLocation" placeholder="Location (optional)">
+							</div>
+
+							<div class="input-default input-lgx">
+								<input type="text" name="salary" id="wammee_salary" placeholder="Salary">
+								<span class="initial"></span>
+							</div>
+						</div>
+
+						<div class="input-row">
+							<textarea id="description" name="description"></textarea>
+							<span class="initial"></span>
+						</div>
+
+						<div class="input-row">
+							<label class="custom-radio" for="app-type-email">
+								<input type="radio" name="applicationType" id="app-type-email" value="0" checked="">
+								<div class="check-indicator"></div>
+								<span>Send me all job applications by email:</span>
+							</label>
+						</div>
+
+						<div class="input-row">
+							<div class="input-default">
+								<input type="text" id="atsEmail" name="applicationsEmail" placeholder="Email Address">
+								<span class="initial"></span>
+							</div>
+						</div>
+
+						<div class="input-row">
+							<label class="custom-radio" for="app-type-url">
+								<input type="radio" name="applicationType" id="app-type-url" value="1">
+								<div class="check-indicator"></div>
+								<span>Direct applicants to an external site to apply:</span>
+							</label>
+						</div>
+
+						<div class="input-row">
+							<div class="input-default">
+								<input type="text" id="atsURL" name="atsURL" placeholder="External Site URL" disabled="">
+								<span class="initial"></span>
+							</div>
+						</div>
+
+						<input type="hidden" id="sid" name="searchId" value="{{searchId}}" readonly>
+						<input type="hidden" id="credits" name="creditsToDeduct" value="{{credits}}" readonly>
+
+						<div class="input-row">
+							<a href="#" class="btn green disabled" id="campaign-apply-btn">Preview Campaign</a>
+						</div>
+
+						{{#ifMatches country toMatch='uk'}}
+						<small>Marketing to this pool will cost <strong>{{credits}}</strong> campaign(s).</small>
+						{{/ifMatches}}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="layoutBody">
+	{{> layoutHeader}}
+
+	<main>
+		<section id="key" class="loading">
+		</section>
+
+		<section id="alt" class="loading">
+			<div id="map-legend" class="legend">
+				<h2>Density</h2>
+
+				<div class="scale">
+					<span class="point p1"></span>
+					<span class="point p2"></span>
+					<span class="point p3"></span>
+					<span class="point p4"></span>
+					<span class="point p5"></span>
+					<span class="point p6"></span>
+					<span class="point p7"></span>
+					<span class="point p8"></span>
+					<span class="point p9"></span>
+				</div>
+
+				<div class="color-text">
+					Higher
+					<span>Medium</span>
+					Lower
+				</div>
+			</div>
+		</section>
+
+		<section id="ext" class="loading on-back">
+		</section>
+	</main>
+</script>
+<script type="text/x-handlebars-template" name="layoutHeader" partial-name="layoutHeader">
+	<header>
+		<a href="/dashboard" class="logo">
+			{{{imageHelper 'horsefly' 'Horsefly - Talent Market Analytics'}}}
+		</a>
+
+		<ul class="navigation">
+			<li class="has-child">
+				<span>Welcome {{{userNameFirst}}}</span>
+
+				<ul class="submenu">
+					{{#is_admin}}
+					<li>
+						<a href="/companies/profile" title="Company Profile" target="_blank">
+							<i class="fa fa-briefcase"></i>Company Profile
+						</a>
+					</li>
+					{{/is_admin}}
+
+					<li>
+						<a href="/users/profile" title="Edit Profile" target="_blank">Edit Profile</a>
+					</li>
+
+					{{#is_admin}}
+					<li>
+						<a href="/companies/users" title="Users Management" target="_blank">
+							<i class="fa fa-users"></i>Users Management
+						</a>
+					</li>
+					{{/is_admin}}
+
+					<li>
+						<a href="/logout" title="Log Out">Log Out</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</header>
+</script>
+<script type="text/x-handlebars-template" name="mod_data_breakdown" partial-name="mod_data_breakdown">
+	<div class="gender-breakdown">
+		<h3>Gender Breakdown</h3>
+
+		{{#ifIsTotal gender.[1] total=gender.[2]}}
+		<div class="gender-block male">
+			<div class="fill" style="top: 100%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/male.svg">
+		</div>
+
+		<div class="data">
+			<div class="data-male">N/A</div>
+			<div class="data-female">N/A</div>
+		</div>
+
+		<div class="gender-block female">
+			<div class="fill" style="top: 100%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/female.svg">
+		</div>
+		{{else}}
+		<div class="gender-block male">
+			<div class="fill" style="top: {{pctRoundFill gender.[1] total=gender.[2]}}%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/male.svg">
+		</div>
+
+		<div class="data">
+			<div class="data-male">{{pctRound gender.[1] total=gender.[2]}}%</div>
+			<div class="data-female">{{pctRound gender.[0] total=gender.[2]}}%</div>
+		</div>
+
+		<div class="gender-block female">
+			<div class="fill" style="top: {{pctRoundFill gender.[0] total=gender.[2]}}%"></div>
+			<img src="https://s3.eu-west-2.amazonaws.com/horsefly-web/svg/female.svg">
+		</div>
+		{{/ifIsTotal}}
+	</div>
+
+	<div class="experience-breakdown">
+		<h3>Experience Breakdown</h3>
+
+		<div class="exp-block jr">
+			<div class="row" style="top: {{pctRoundFill exp.[0] total=exp.[3]}}%">
+				<span>{{pctRound exp.[0] total=exp.[3]}}%</span>
+				<div class="col"></div>
+			</div>
+		</div>
+
+		<div class="exp-block md">
+			<div class="row" style="top: {{pctRoundFill exp.[1] total=exp.[3]}}%">
+				<span>{{pctRound exp.[1] total=exp.[3]}}%</span>
+				<div class="col"></div>
+			</div>
+		</div>
+
+		<div class="exp-block sr">
+			<div class="row" style="top: {{pctRoundFill exp.[2] total=exp.[3]}}%">
+				<span>{{pctRound exp.[2] total=exp.[3]}}%</span>
+				<div class="col"></div>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="mod_dropdown_list" partial-name="mod_dropdown_list">
+	<ul id="{{ddlId}}" class="options-dropdown">
+		<li class="with-child">
+			<h6>{{ddlName}}
+				<i class="material-icons open">expand_more</i>
+				<i class="material-icons close">expand_less</i>
+			</h6>
+			
+			<ul class="child-list">
+				{{#each ddlItems}}
+					{{> part_ddl_item}}
+				{{/each}}
+			</ul>
+		</li>
+	</ul>
+</script>
+<script type="text/x-handlebars-template" name="mod_form_location" partial-name="mod_form_location">
+	<div class="input-default input-md">
+		<select id="search_country" name="search_country" placeholder="Country">
+		</select>
+	</div>
+
+	<div class="input-default input-xl">
+		<input type="text" id="search_location" name="search_location" placeholder="Location">
+	</div>
+
+	<div class="input-default input-sm">
+		<select id="search_radius" name="search_radius" placeholder="Radius" disabled>
+		</select>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="mod_jobpost_details" partial-name="mod_jobpost_details">
+	<div class="overview">
+		<a href="#" class="closepane"><i class="material-icons">keyboard_arrow_left</i></a>
+		<h2 class="title">{{title}}</h2>
+	</div>
+
+	<div class="contents">
+		<div class="scrollable">
+			<div class="jobposts-detailed">
+				<p>{{content}}</p>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="mod_projection_details" partial-name="mod_projection_details">
+	<div class="overview">
+		<a href="#" class="closepane"><i class="material-icons">keyboard_arrow_left</i></a>
+		<h2 class="title">{{dataType}} Projection</h2>
+	</div>
+
+	<div class="contents">
+		<div class="scrollable">
+			<div class="projection-detailed" id="projection-wrap">
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="mod_search_filters" partial-name="mod_search_filters">
+	<label class="custom-check" for="checkAll">
+		<input type="checkbox" name="checkAll[]" id="checkAll" value="checkAll">
+		<div class="check-indicator"></div>
+	</label>
+
+	<div class="input-invisible input-lg">
+		<input type="text" id="filter-input" name="filter-input" placeholder="Type to filter">
+	</div>
+
+	<a href="#action" class="link sortable" id="sort-name" data-action="sort">Sort by name</a>
+
+	<div class="button-set hfloat-e">
+		<a href="#action" class="btn red" id="delete-selected" data-action="delete" style="display: none;">
+			<i class="material-icons">delete</i>Delete <span>0</span>
+		</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="mod_select_currency" partial-name="mod_select_currency">
+	<div class="input-minimal input-xs hfloat-e">
+		<select id="search_currency" name="search_currency" placeholder="Currency">
+		</select>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="mod_tabs" partial-name="mod_tabs">
+	<ul class="tabs">
+	{{#each tabItems}}
+		<li class="tab-item">
+			<a href="#tab" data-tab="{{viewName}}">{{tabTitle}}</a>
+		</li>
+	{{/each}}
+	</ul>
+</script>
+<script type="text/x-handlebars-template" name="mod_tag_group" partial-name="mod_tag_group">
+	<div id="tag-group-{{groupId}}" class="tag-group-wrapper mod-wrap loading">
+		<div class="tag-group-options">
+			<h3>Search Group Options</h3>
+
+			<div class="in-out-toggle">
+				<label for="tag-toggle-{{groupId}}">Include terms</label>
+				<input type="checkbox" id="tag-toggle-{{groupId}}" class="toggle-input" checked>
+				<label for="tag-toggle-{{groupId}}" class="switch"></label>
+				<label for="tag-toggle-{{groupId}}">Exclude terms</label>
+			</div>
+
+			<a href="#" class="link red hfloat-e" id="tag-remove-{{groupId}}">
+				<i class="material-icons">remove_circle</i>Discard
+			</a>
+		</div>
+
+		<input type="text" id="tag-list-{{groupId}}" class="input-default tag-list" placeholder="Search keywords" />
+
+		<div id="tag-suggestions-{{groupId}}" class="tag-suggestions"></div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="modal_deleteSearch" partial-name="modal_deleteSearch">
+	<div class="m-body m-small">
+		<h3>Are you sure you want to continue?</h3>
+		<p>This action cannot be undone.</p>
+	</div>
+
+	<div class="m-foot halign-c">
+		<a href="#" class="btn gray m-close">Cancel</a>
+		<a href="#" class="btn green" id="delete-confirm">Yes, Delete</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="modal_doLogout" partial-name="modal_doLogout">
+	<div class="m-body m-small">
+		<h3>Are you sure you want to continue?</h3>
+		<p>There's another session using the same user ID. If you continue it will automatically logout all other sessions.</p>
+	</div>
+
+	<div class="m-foot halign-c">
+		<a href="#" class="btn gray" id="cancel-session">Cancel</a>
+		<a href="#" class="btn green" id="continue-session">Continue</a>
+		<a href="#" class="hidden m-close">Close</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="modal_exportPDF" partial-name="modal_exportPDF">
+	<div class="m-head">
+		<h3 class="halign-c">Export to PDF</h3>
+		<a href="#" class="x-close-btn m-close">x</a>
+	</div>
+
+	<div class="m-body">
+		<h4>Search Results</h4>
+
+		<div class="filter-block col-3">
+			<label class="custom-check" for="add-terms">
+				<input type="checkbox" name="addToPDF" id="add-terms" value="terms" checked="">
+				<div class="check-indicator"></div>
+				<span>Search Terms</span>
+			</label>
+
+			<label class="custom-check" for="add-mapdata">
+				<input type="checkbox" name="addToPDF" id="add-mapdata" value="mapdata">
+				<div class="check-indicator"></div>
+				<span>Map Results</span>
+			</label>
+
+			<label class="custom-check" for="add-results">
+				<input type="checkbox" name="addToPDF" id="add-results" value="results" checked="">
+				<div class="check-indicator"></div>
+				<span>Results by Region</span>
+			</label>
+
+			<span class="warning">Please note. To download a PDF with map results, you need to allow browser pop ups.</span>
+		</div>
+
+		<h4>Regional Charts</h4>
+
+		<div class="filter-block col-2">
+			<label class="custom-check" for="add-chart-demand">
+				<input type="checkbox" name="addToPDF" id="add-chart-demand" value="chart-demand" checked="">
+				<div class="check-indicator"></div>
+				<span>Supply and demand</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-breakdown">
+				<input type="checkbox" name="addToPDF" id="add-chart-breakdown" value="chart-breakdown" checked="">
+				<div class="check-indicator"></div>
+				<span>Demographics breakdown</span>
+			</label>
+
+			<label class="hidden" for="add-chart-ethnicity">
+				<input type="checkbox" name="addToPDF" id="add-chart-ethnicity" value="chart-ethnicity" checked="">
+			</label>
+
+			<label class="custom-check" for="add-chart-schools">
+				<input type="checkbox" name="addToPDF" id="add-chart-schools" value="chart-schools" checked="">
+				<div class="check-indicator"></div>
+				<span>Top graduate universities</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-jobTitles">
+				<input type="checkbox" name="addToPDF" id="add-chart-jobTitles" value="chart-jobTitles" checked="">
+				<div class="check-indicator"></div>
+				<span>Top associated job titles</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-companies">
+				<input type="checkbox" name="addToPDF" id="add-chart-companies" value="chart-companies" checked="">
+				<div class="check-indicator"></div>
+				<span>Top companies who hire this profile</span>
+			</label>
+
+			<label class="custom-check" for="add-chart-hardSkills">
+				<input type="checkbox" name="addToPDF" id="add-chart-hardSkills" value="chart-hardSkills" checked="">
+				<div class="check-indicator"></div>
+				<span>Top associated keywords</span>
+			</label>
+		</div>
+
+		<h4>Associated Data</h4>
+
+		<div class="filter-block col-1">
+			<label class="custom-check" for="add-associated">
+				<input type="checkbox" name="addToPDF" id="add-associated" value="associated" checked="">
+				<div class="check-indicator"></div>
+				<span>Companies who hire similar candidates, related job titles and skills</span>
+			</label>
+		</div>
+	</div>
+
+	<div class="m-foot halign-e">
+		<a href="#" class="btn gray m-close">Cancel</a>
+		<a href="#" class="btn blue" id="make-pdf-preview">Generate preview</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="modal_loggedOut" partial-name="modal_loggedOut">
+	<div class="m-body m-small">
+		<h3>You have been logged out!</h3>
+		<p>Another session just started with your user ID.</p>
+		<p>You are now being redirected to JTW Dashboard.</p>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="modal_noisewords" partial-name="modal_noisewords">
+	<div class="m-body m-small">
+		<h3>Invalid Keyword</h3>
+		<p>The keyword you entered is considered a "noise" word.<br />Noise words are words so common that are not useful in searches, therefore, they are not indexed and we do not take them into account.</p>
+	</div>
+
+	<div class="m-foot halign-c">
+		<a href="#" class="btn blue m-close">Close</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="modal_saveSearch" partial-name="modal_saveSearch">
+	<div class="m-body m-small">
+		<h3>Enter a name for this search</h3>
+
+		<div class="input-default">
+			<input type="text" id="save_search" placeholder="Search Name">
+		</div>
+
+		<small>At least 3 characters long</small>
+	</div>
+
+	<div class="m-foot halign-c">
+		<a href="#" class="btn gray m-close">Cancel</a>
+		<a href="#" class="btn green disabled" id="save-confirm">Save Search</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="modal_sourcing" partial-name="modal_sourcing">
+	<div class="m-body m-small">
+		<h3>Sourcing data</h3>
+		<p>Data in this area is currently indeterminate, Horsefly sees what you're looking for and has automatically started searching for improved intelligence. Come back later and see what it found.</p>
+	</div>
+
+	<div class="m-foot halign-c">
+		<a href="#" class="btn blue m-close">Close</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="part_ddl_item" partial-name="part_ddl_item">
+	<li>
+		<a href="#" data-action="{{action}}">
+			<i class="material-icons">{{icon}}</i>{{name}}
+		</a>
+	</li>
+</script>
+<script type="text/x-handlebars-template" name="part_dropmenu_filter" partial-name="part_dropmenu_filter">
+	<div class="dropmenu" id="filters">
+		<a href="#"><i class="material-icons">tune</i>Filters</a>
+		<div class="droplist">
+			<h4><i class="material-icons">wc</i>Gender</h4>
+			<div class="filter-block gender">
+				<label class="custom-check" for="male">
+					<input type="checkbox" name="gender[]" id="male" value="male" checked>
+					<div class="check-indicator"></div>
+					<span>Male</span>
+				</label>
+
+				<label class="custom-check" for="female">
+					<input type="checkbox" name="gender[]" id="female" value="female" checked>
+					<div class="check-indicator"></div>
+					<span>Female</span>
+				</label>
+			</div>
+
+			<h4><i class="material-icons">star</i>Experience</h4>
+			<div class="filter-block experience">
+				<label class="custom-check" for="yoe0">
+					<input type="checkbox" name="exp[]" id="yoe0" value="yoe0" checked>
+					<div class="check-indicator"></div>
+					<span>0-3 years</span>
+				</label>
+
+				<label class="custom-check" for="yoe1">
+					<input type="checkbox" name="exp[]" id="yoe1" value="yoe1" checked>
+					<div class="check-indicator"></div>
+					<span>4-7 years</span>
+				</label>
+
+				<label class="custom-check" for="yoe2">
+					<input type="checkbox" name="exp[]" id="yoe2" value="yoe2" checked>
+					<div class="check-indicator"></div>
+					<span>8+ years</span>
+				</label>
+			</div>
+
+			<h4><i class="material-icons">pool</i>Talent Pool</h4>
+			<div class="filter-block talentpool">
+				<label class="custom-check" for="tpOnly">
+					<input type="checkbox" name="tp[]" id="tpOnly" value="tpOnly">
+					<div class="check-indicator"></div>
+					<span>TP Only</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="part_jobpost_item" partial-name="part_jobpost_item">
+	<div class="jobpost-item">
+		<a href="#" class="jobpost-title" data-jobpost="{{id}}">{{title}}</a>
+
+		<div class="jobpost-content">
+			<div class="details">
+				<span>{{company}}</span>
+				{{#if salary}}
+				<span>{{numFormat salary entity=currency}}</span>
+				{{/if}}
+			</div>
+
+			<p>{{content}}</p>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="part_jobposts_list" partial-name="part_jobposts_list">
+	<div class="ext-overview">
+		<a href="#" class="backbtn"><i class="material-icons">keyboard_arrow_left</i></a>
+		<h2>{{location}}</h2>
+	</div>
+
+	<div class="contents">
+		<div class="scrollable">
+			<div id="jobposts-list">
+				{{#each jobposts}}
+					{{> part_jobpost_item}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="part_list_item" partial-name="part_list_item">
+	<li data-sid="{{searchId}}">
+		<label class="custom-check" for="{{searchId}}">
+			<input type="checkbox" name="favorites[]" id="{{searchId}}" value="{{searchId}}">
+			<div class="check-indicator"></div>
+			<span>{{searchName}}</span>
+		</label>
+
+		<div class="actions">
+			<a href="#" class="load"><i class="material-icons">file_download</i></a>
+			<a href="#" class="remove"><i class="material-icons">delete</i></a>
+		</div>
+	</li>
+</script>
+<script type="text/x-handlebars-template" name="part_map_legend" partial-name="part_map_legend">
+	<a href="#" class="nextbtn toggle-map">
+		<i class="material-icons">view_list</i>
+	</a>
+
+	<div id="map-legend" class="legend hidden">
+		<div class="toggle-btn">
+			<div class="toggle-icon">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+
+		<h2>Density</h2>
+
+		<div class="scale">
+			<span class="point p1"></span>
+			<span class="point p2"></span>
+			<span class="point p3"></span>
+			<span class="point p4"></span>
+			<span class="point p5"></span>
+			<span class="point p6"></span>
+			<span class="point p7"></span>
+			<span class="point p8"></span>
+			<span class="point p9"></span>
+		</div>
+
+		<div class="color-text">
+			Higher
+			<span>Medium</span>
+			Lower
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="part_results_card" partial-name="part_results_card">
+	<div class="card-item">
+		{{#ifMatches levelOpts toMatch='deepest'}}
+		<h3 class="geopoint" data-geoid="{{locationId}}">{{location}}</h3>
+		{{else}}
+		<a href="#" class="geopoint" data-geoid="{{locationId}}">{{location}}</a>
+		{{/ifMatches}}
+
+		{{> part_results_item}}
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="part_results_item" partial-name="part_results_item">
+	<ul class="geodata" data-geopoint="{{location}}">
+		<li class="candidates">
+			{{#if candidates}}
+			<a href="#" class="block{{#if region}} is-tooltip{{/if}}">
+				<i class="material-icons">group</i>
+				<span>{{numFormat candidates}}</span>
+				{{#if region}}<p class="bot"><span class="hide-md">Click for </span>Insights</p>{{else}}<p><span class="hide-md">see candidate </span>insights</p>{{/if}}
+			</a>
+			{{else}}
+			<div class="block">
+				<i class="material-icons">group</i>
+				<span>{{numFormat candidates}}</span>
+				{{#if region}}<p class="bot">No Candidates</p>{{else}}<p>no candidates</p>{{/if}}
+			</div>
+			{{/if}}
+		</li>
+
+		<li class="salary">
+			<div class="meter">
+				<div class="fill" style="left: {{meterMin salary.min total=max}}%; right: {{meterMax salary.max total=max}}%;"></div>
+			</div>
+			<div class="block">
+				{{#if salary.avg}}
+				<small class="min">
+					<span class="yearly">{{numFormatK salary.min round="floor"}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.min}}</span>
+					{{/has_rate}}
+				</small>
+				<i class="material-icons">trending_up</i>
+				<strong class="hide-md">
+					<span class="yearly">{{numFormat salary.avg entity=currency}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.avg entity=currency}}</span>
+					{{/has_rate}}
+				</strong>
+				<strong class="only-md">
+					<span class="yearly">{{numFormatK salary.avg entity=currency}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.avg entity=currency}}</span>
+					{{/has_rate}}
+				</strong>
+				<i class="material-icons">trending_up</i>
+				<small class="max">
+					<span class="yearly">{{numFormatK salary.max round="ceil"}}</span>
+					{{#has_rate}}
+					<span class="daily">{{numFormat rate.max}}</span>
+					{{/has_rate}}
+				</small>
+				{{#unless region}}<p><span class="hide-md">average</span><span class="only-md">avg.</span> salary</p>{{/unless}}
+				{{else}}
+				<strong>sourcing</strong><small class="help">?</small>
+				{{/if}}
+			</div>
+		</li>
+
+		<li class="jobposts">
+			{{#if jobposts}}
+			<a href="#" class="block{{#if region}} is-tooltip{{/if}}">
+				<i class="material-icons">assignment</i>
+				<span>{{numFormat jobposts}}</span>
+				{{#if region}}<p class="bot"><span class="hide-md">Click for </span>Adverts</p>{{else}}<p><span class="hide-md">see </span>adverts</p>{{/if}}
+			</a>
+			{{else}}
+			<div class="block">
+				<i class="material-icons">assignment</i>
+				<span>0</span>
+				{{#unless region}}<p>no adverts</p>{{/unless}}
+			</div>
+			{{/if}}
+		</li>
+	</ul>
+</script>
+<script type="text/x-handlebars-template" name="part_results_overview" partial-name="part_results_overview">
+	<div id="result-item" class="overview expanded">
+		{{#ifMatches levelOpts toMatch='isFirst'}}
+		<a href="#" class="backbtn" data-target="search"><i class="material-icons">keyboard_arrow_left</i></a>
+		{{else}}
+		<a href="#" class="backbtn" data-target="results"><i class="material-icons">keyboard_arrow_left</i></a>
+		{{/ifMatches}}
+		<h2>{{location}}</h2>
+
+		{{> part_results_item}}
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="view_not_found" partial-name="view_not_found">
+	<div class="body not-found">
+		<h1>404</h1>
+		<span>Looks like you are lost mate!</span>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="view_results_list" partial-name="view_results_list">
+	{{> part_results_overview overview region=false max=maxTotal}}
+
+	<div id="nav-wrapper" class="options-container{{#if regions}} show{{/if}}">
+		{{#has_rate}}
+		<div class="toggle-salary">
+			<span>Annual Salary</span>
+			<input type="checkbox" id="switch" value="show-rate">
+			<label for="switch">Toggle</label>
+			<span>Daily Rate</span>
+		</div>
+		{{/has_rate}}
+	</div>
+
+	<div class="contents">
+		<div class="scrollable">
+			<div id="result-list" class="regions">
+				{{#each regions}}
+					{{> part_results_card region=true max=../maxTotal}}
+				{{else}}
+					<div class="empty">
+						<span>
+							No matching results!<br/>
+							Please contact us using the chat box on the bottom right if you need our help!
+						</span>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="view_search_build" partial-name="view_search_build">
+	<div class="contents">
+		<div class="scrollable search-scroll pad-ew-xs">
+			<h2 class="section-title" id="search-title">New Search</h2>
+
+			{{> mod_select_currency}}
+
+			{{> part_dropmenu_filter}}
+
+			<div class="input-row">
+				{{> mod_form_location}}
+			</div>
+
+			<div id="tag-groups" class="input-row">
+			</div>
+
+			<a href="#" class="btn green disabled" id="create-tag-group">
+				<i class="material-icons">playlist_add</i>Add search group
+			</a>
+		</div>
+	</div>
+
+	<div class="button-panel" id="search-actions">
+		<a href="#" class="btn gray" data-action="reset">
+			<i class="material-icons">undo</i>Discard search
+		</a>
+
+		<a href="#" class="btn blue" data-action="explore">
+			<i class="material-icons">location_searching</i>Explore Results
+		</a>
+	</div>
+</script>
+<script type="text/x-handlebars-template" name="view_search_saved" partial-name="view_search_saved">
+	<div class="filters{{#if favorites.length}} show{{/if}}">
+	{{> mod_search_filters}}
+	</div>
+
+	<div class="contents">
+		<div class="scrollable pad-ew-xs">
+			<ul class="item-list">
+			{{#each favorites}}
+				{{> part_list_item}}
+			{{else}}
+				<li class="empty">
+					<span>No saved searches found!</span>
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+</script>

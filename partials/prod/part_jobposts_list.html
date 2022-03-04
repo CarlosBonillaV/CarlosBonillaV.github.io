@@ -1,0 +1,16 @@
+<script type="text/x-handlebars-template" name="part_jobposts_list" partial-name="part_jobposts_list">
+	<div class="ext-overview">
+		<a href="#" class="backbtn"><i class="material-icons">keyboard_arrow_left</i></a>
+		<h2>{{location}}</h2>
+	</div>
+
+	<div class="contents">
+		<div class="scrollable">
+			<div id="jobposts-list">
+				{{#each jobposts}}
+					{{> part_jobpost_item}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</script>

@@ -1,0 +1,98 @@
+<script type="text/x-handlebars-template" name="extra_wammee" partial-name="extra_wammee">
+	<div class="body">
+		<div id="ext-wrap" class="container wammee-wrapper">
+			<div class="ext-overview">
+				<a href="#" class="backbtn"><i class="material-icons">keyboard_arrow_left</i></a>
+				{{{imageHelper 'wammee' 'Wammee'}}}
+			</div>
+
+			<div class="contents">
+				<div class="scrollable">
+					<h2>Market your opportunity to {{#ifMatches country toMatch='uk'}}<strong>{{numFormat candidates}}</strong>{{/ifMatches}} matching candidates</h2>
+					<small>Please note all searches are quality checked by our in-house experts.</small>
+
+					<form accept-charset="UTF-8" action="/companies/campaigns/preview" id="form-campaign-preview" name="form-campaign-add" autocomplete="on" method="post" target="_blank">
+						<div class="input-row">
+							<div class="input-default input-xxl">
+								<input type="text" name="title" id="wammee_title" placeholder="Position Name">
+								<span class="initial"></span>
+							</div>
+
+							<div class="input-default input-mds">
+								<select id="hireType" name="hireType" placeholder="Hire Type">
+									<option value="0">Permanent</option>
+									<option value="1">Contract</option>
+									<option value="2">Freelance</option>
+								</select>
+							</div>
+
+							<div class="input-default input-mds">
+								<select id="hours" name="hours" placeholder="Hours">
+									<option value="0">Full-Time</option>
+									<option value="1">Part-Time</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="input-row">
+							<div class="input-default input-xxl">
+								<input type="text" id="originalLocation" name="originalLocation" placeholder="Location (optional)">
+							</div>
+
+							<div class="input-default input-lgx">
+								<input type="text" name="salary" id="wammee_salary" placeholder="Salary">
+								<span class="initial"></span>
+							</div>
+						</div>
+
+						<div class="input-row">
+							<textarea id="description" name="description"></textarea>
+							<span class="initial"></span>
+						</div>
+
+						<div class="input-row">
+							<label class="custom-radio" for="app-type-email">
+								<input type="radio" name="applicationType" id="app-type-email" value="0" checked="">
+								<div class="check-indicator"></div>
+								<span>Send me all job applications by email:</span>
+							</label>
+						</div>
+
+						<div class="input-row">
+							<div class="input-default">
+								<input type="text" id="atsEmail" name="applicationsEmail" placeholder="Email Address">
+								<span class="initial"></span>
+							</div>
+						</div>
+
+						<div class="input-row">
+							<label class="custom-radio" for="app-type-url">
+								<input type="radio" name="applicationType" id="app-type-url" value="1">
+								<div class="check-indicator"></div>
+								<span>Direct applicants to an external site to apply:</span>
+							</label>
+						</div>
+
+						<div class="input-row">
+							<div class="input-default">
+								<input type="text" id="atsURL" name="atsURL" placeholder="External Site URL" disabled="">
+								<span class="initial"></span>
+							</div>
+						</div>
+
+						<input type="hidden" id="sid" name="searchId" value="{{searchId}}" readonly>
+						<input type="hidden" id="credits" name="creditsToDeduct" value="{{credits}}" readonly>
+
+						<div class="input-row">
+							<a href="#" class="btn green disabled" id="campaign-apply-btn">Preview Campaign</a>
+						</div>
+
+						{{#ifMatches country toMatch='uk'}}
+						<small>Marketing to this pool will cost <strong>{{credits}}</strong> campaign(s).</small>
+						{{/ifMatches}}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

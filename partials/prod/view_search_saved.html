@@ -1,0 +1,19 @@
+<script type="text/x-handlebars-template" name="view_search_saved" partial-name="view_search_saved">
+	<div class="filters{{#if favorites.length}} show{{/if}}">
+	{{> mod_search_filters}}
+	</div>
+
+	<div class="contents">
+		<div class="scrollable pad-ew-xs">
+			<ul class="item-list">
+			{{#each favorites}}
+				{{> part_list_item}}
+			{{else}}
+				<li class="empty">
+					<span>No saved searches found!</span>
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+</script>

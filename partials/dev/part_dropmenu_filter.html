@@ -1,0 +1,51 @@
+<script type="text/x-handlebars-template" name="part_dropmenu_filter" partial-name="part_dropmenu_filter">
+	<div class="dropmenu" id="filters">
+		<a href="#"><i class="material-icons">tune</i>Filters</a>
+		<div class="droplist">
+			<h4><i class="material-icons">wc</i>Gender</h4>
+			<div class="filter-block gender">
+				<label class="custom-check" for="male">
+					<input type="checkbox" name="gender[]" id="male" value="male" checked>
+					<div class="check-indicator"></div>
+					<span>Male</span>
+				</label>
+
+				<label class="custom-check" for="female">
+					<input type="checkbox" name="gender[]" id="female" value="female" checked>
+					<div class="check-indicator"></div>
+					<span>Female</span>
+				</label>
+			</div>
+
+			<h4><i class="material-icons">star</i>Experience</h4>
+			<div class="filter-block experience">
+				<label class="custom-check" for="yoe0">
+					<input type="checkbox" name="exp[]" id="yoe0" value="yoe0" checked>
+					<div class="check-indicator"></div>
+					<span>0-3 years</span>
+				</label>
+
+				<label class="custom-check" for="yoe1">
+					<input type="checkbox" name="exp[]" id="yoe1" value="yoe1" checked>
+					<div class="check-indicator"></div>
+					<span>4-7 years</span>
+				</label>
+
+				<label class="custom-check" for="yoe2">
+					<input type="checkbox" name="exp[]" id="yoe2" value="yoe2" checked>
+					<div class="check-indicator"></div>
+					<span>8+ years</span>
+				</label>
+			</div>
+
+			<h4><i class="material-icons">all_inclusive</i>Other Options</h4>
+			<div class="filter-block talentpool">
+				<label class="custom-check" for="wfOnly">
+					<input type="checkbox" name="wf[]" id="wfOnly" value="wfOnly">
+					<div class="check-indicator"></div>
+					<span>Workforce</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</script>

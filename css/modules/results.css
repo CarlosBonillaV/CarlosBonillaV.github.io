@@ -1,0 +1,1751 @@
+/*
+	    ____                      __ __
+	   / __ \ ___   _____ __  __ / // /_ _____
+	  / /_/ // _ \ / ___// / / // // __// ___/
+	 / _, _//  __/(__  )/ /_/ // // /_ (__  )
+	/_/ |_| \___//____/ \__,_//_/ \__//____/
+
+*/
+
+/*  Global section base containers  */
+.view-results .scrollable {
+	padding-top: 0;
+	padding-bottom: 10px;
+}
+
+.jobposts-wrapper .scrollable,
+.profiles-wrapper .scrollable,
+.projections-wrapper .scrollable,
+.wammee-wrapper .scrollable {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.candidates-wrapper .scrollable {
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+
+.regions {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	background-color: #fcfbfa;
+	z-index: 1;
+}
+
+.regions .empty {
+	display: block;
+	position: relative;
+	text-align: center;
+	margin: 30px 0 0 0;
+	padding: 0 20px;
+}
+
+.regions .empty > span {
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 22px;
+}
+
+.overview,
+.ext-overview {
+	display: block;
+	position: relative;
+	height: auto;
+	font-size: 0;
+	padding: 14px 10px 0 10px;
+	border-bottom: 1px solid #dedede;
+	background-color: #f3f3f3;
+	z-index: 9;
+}
+
+.overview h2,
+.ext-overview h2 {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 28px;
+	text-align: center;
+	color: #454749;
+	margin-bottom: 4px;
+}
+
+.ext-overview h2 {
+	text-transform: capitalize;
+	margin-bottom: 7px;
+}
+
+.overview h2:before,
+.ext-overview h2:before {
+	font-size: 11px;
+	font-weight: 400;
+	line-height: 14px;
+	text-transform: uppercase;
+	color: #888;
+	margin: 0;
+}
+
+.overview h2:before {
+	content: 'Showing results for:';
+	display: none;
+}
+
+.jobposts-wrapper .ext-overview h2:before {
+	content: 'Listing adverts in:';
+	display: block;
+}
+
+.profiles-wrapper .ext-overview h2:before {
+	content: 'Listing candidates in:';
+	display: block;
+}
+
+.candidates-wrapper .ext-overview h2:before {
+	content: 'Talent insights for:';
+	display: block;
+}
+
+.overview > a.backbtn,
+.overview > a.nextbtn,
+.ext-overview a.backbtn,
+.overview > a.closepane {
+	position: absolute;
+	width: 22px;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 22px;
+	text-decoration: none;
+	color: #fff;
+	border-radius: 50%;
+	background-color: #484848;
+	z-index: 9;
+}
+
+.overview > a.nextbtn {
+	right: 10px;
+}
+
+.overview > a.toggle-map,
+.overview.expanded > a.toggle-map {
+	opacity: 0;
+	visibility: hidden;
+	z-index: -9;
+}
+
+.overview > a.backbtn,
+.overview > a.nextbtn {
+	top: 16px;
+}
+
+.ext-overview a.backbtn,
+.overview > a.closepane {
+	top: 23px;
+}
+
+.overview a.backbtn:hover,
+.overview a.nextbtn:hover,
+.ext-overview a.backbtn:hover,
+.overview > a.closepane:hover {
+	text-decoration: none;
+	background-color: #4584c4;
+}
+
+.overview a.backbtn > i,
+.overview a.nextbtn > i,
+.ext-overview a.backbtn > i,
+.overview > a.closepane > i {
+	display: block;
+	font-size: inherit;
+	line-height: inherit;
+	text-align: center;
+	vertical-align: top;
+	color: inherit;
+	margin: 0;
+}
+
+.ext-overview a.switch-view {
+	position: absolute;
+	top: 16px;
+	right: 10px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #4584c4;
+	padding: 4px;
+}
+
+.ext-overview a.switch-view > i:first-child,
+.ext-overview a.switch-view.list > i:last-child {
+	display: none;
+}
+
+.ext-overview a.switch-view > i:last-child,
+.ext-overview a.switch-view.list > i:first-child {
+	display: block;
+}
+
+.geodata {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.geodata > li {
+	display: inline-block;
+	position: relative;
+	width: 46%;
+	font-size: 0;
+	text-align: center;
+	color: #4c9059;
+	vertical-align: top;
+}
+
+.geodata > li:first-child,
+.geodata > li:last-child {
+	width: 27%;
+}
+
+.geodata > li:first-child {
+	color: #3170a3;
+	padding-left: 0;
+}
+
+.geodata > li:last-child {
+	color: #f9a100;
+	padding-right: 0;
+}
+
+.geodata > li > .block {
+	display: inline-block;
+	font-size: 0;
+	text-align: center;
+	text-decoration: none;
+	color: inherit;
+}
+
+.geodata > li > .block > span,
+.geodata > li > .block > strong,
+.geodata > li > .block > small {
+	display: inline-block;
+	position: relative;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: top;
+}
+
+#base-contents .geodata > li.salary > .block > strong > span.daily,
+#base-contents .geodata > li.salary > .block > small > span.daily,
+#base-contents.show-rate .geodata > li.salary > .block > strong > span.yearly,
+#base-contents.show-rate .geodata > li.salary > .block > small > span.yearly {
+	display: none;
+}
+
+#base-contents .geodata > li.salary > .block > strong > span.yearly,
+#base-contents .geodata > li.salary > .block > small > span.yearly,
+#base-contents.show-rate .geodata > li.salary > .block > strong > span.daily,
+#base-contents.show-rate .geodata > li.salary > .block > small > span.daily {
+	display: block;
+}
+
+.geodata > li > .block > small.min {
+	vertical-align: bottom;
+}
+
+.geodata > li > .block > span,
+.geodata > li > .block > strong {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.geodata > li > .block > small {
+	font-size: 12px;
+	line-height: 16px;
+	color: #333;
+}
+
+.geodata > li > .block > small.help {
+	width: 17px;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 15px;
+	text-align: center;
+	color: #3b8249;
+	border: 1px solid #3b8249;
+	border-radius: 50%;
+	margin: 5px 0 0 6px;
+	cursor: pointer;
+}
+
+.geodata > li > .block > i {
+	width: 22px;
+	font-size: 18px;
+	line-height: 24px;
+	margin: 0 5px;
+	padding: 0;
+}
+
+.geodata > li > .block > small + i,
+.geodata > li > .block > strong + i {
+	font-size: 16px;
+	margin: 0 2px 0 1px;
+}
+
+.geodata > li > .block > small + i {
+	line-height: 16px;
+	vertical-align: bottom;
+}
+
+.geodata > li > .block > strong + i {
+	line-height: 18px;
+	vertical-align: top;
+}
+
+.geodata > li:first-child > .block > i,
+.geodata > li:last-child > .block > i {
+	margin: 0 5px 0 0;
+}
+
+.geodata > li > .block > p {
+	display: block;
+	position: relative;
+	width: auto;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 20px;
+	text-decoration: none;
+	text-transform: capitalize;
+	color: #777;
+	margin-top: 14px;
+}
+
+
+/*  Hover Styles  */
+.geodata > li:first-child > a.block:hover > i,
+.geodata > li:first-child > a.block:hover > span  {
+	color: #1e5480;
+}
+
+.geodata > li:last-child > a.block:hover > i,
+.geodata > li:last-child > a.block:hover > span {
+	color: #d48b06;
+}
+
+.geodata > li > a.block:hover > p {
+	color: #222;
+}
+
+
+/*  Separators  */
+.geodata > li > hr,
+.geodata > li > .meter {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	font-size: 0;
+	margin: 0 10px;
+	border-radius: 2px;
+}
+
+.geodata > li > hr {
+	height: 1px;
+	margin-bottom: 1px;
+	border: none;
+	background-color: #e6e6e6;
+}
+
+.geodata > li > .meter {
+	height: 3px;
+	background-color: #ddd;
+}
+
+.geodata > li > .meter > .fill {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border-radius: 2px;
+	background-color: #4a9258;
+}
+
+
+/*  Tooltip  */
+.geodata > li > .is-tooltip > p,
+.data-list > li .is-tooltip > p {
+	display: none;
+	position: absolute;
+	width: 72%;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14px;
+	text-transform: none;
+	white-space: nowrap;
+	color: #fff;
+	margin: 0;
+	padding: 8px 10px;
+	border-radius: 3px;
+	background-color: rgba(0, 0, 0, .8);
+	z-index: 99;
+}
+
+.geodata > li > .block.is-tooltip:hover > p,
+.data-list > li .is-tooltip:hover > p {
+	display: block;
+	color: #fff;
+}
+
+.geodata > li > .is-tooltip > p.bot {
+	bottom: -22px;
+	left: 14%;
+}
+
+.data-list > li .is-tooltip > p.lft {
+	right: 40px;
+	bottom: 4px;
+    width: auto;
+}
+
+.geodata > li > .is-tooltip > p:before,
+.data-list > li .is-tooltip > p:before {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	border: 4px solid transparent;
+}
+
+.geodata > li > .is-tooltip > p.bot:before {
+	top: -8px;
+	left: 50%;
+	margin-left: -2px;
+	border-bottom-color: rgba(0, 0, 0, .8);
+}
+
+.data-list > li .is-tooltip > p.lft:before {
+	top: 50%;
+	right: -8px;
+	margin-top: -4px;
+	border-left-color: rgba(0,0,0,.8);
+}
+
+
+/*  Card Item  */
+.card-item {
+	display: block;
+	position: relative;
+	height: auto;
+	margin: 15px 10px;
+	padding: 10px 10px 8px 10px;
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .14);
+	transition: box-shadow .3s ease-out;
+}
+
+.card-item:hover {
+	box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .32);
+}
+
+.card-item > a.geopoint,
+.card-item > h3.geopoint {
+	font-size: 15px;
+	font-weight: 400;
+	text-decoration: none;
+	text-transform: capitalize;
+	color: #666;
+}
+
+.card-item > a.geopoint:hover {
+	text-decoration: underline;
+	color: #4584c4;
+}
+
+.card-item > .geodata {
+	margin: 10px 0 0 0;
+}
+
+.card-item .geodata > li {
+	padding: 0 10px 10px 10px;
+}
+
+.card-item > small {
+	font-size: 14px;
+	font-weight: 300;
+	margin: 0 0 0 10px;
+}
+
+.card-item > small > a.projections {
+	color: #4283c6;
+	text-decoration: none;
+}
+
+
+/*  Advert Item  */
+.jobpost-item,
+.profile-item {
+	display: block;
+	position: relative;
+	margin: 0 10px;
+	padding: 20px 5px;
+	border-top: 1px solid #dedede;
+}
+
+.jobpost-item:first-child,
+.jobpost-item:only-child,
+.profile-item:first-child,
+.profile-item:only-child {
+	border-top: none;
+}
+
+.jobpost-item > a,
+.profile-item > a {
+	font-size: 15px;
+	font-weight: 400;
+	text-decoration: none;
+	text-transform: capitalize;
+	color: #4584c4;
+}
+
+.profile-item > a.profile-title {
+	text-transform: none;
+}
+
+.jobpost-item > a:hover,
+.profile-item > a:hover {
+	text-decoration: underline;
+	color: #2a65a0;
+}
+
+.jobpost-item .jobpost-content,
+.profile-item .profile-content {
+	display: block;
+	position: relative;
+	margin: 0;
+}
+
+.jobpost-content .details,
+.profile-content .details {
+	display: inline-block;
+	font-size: 0;
+	margin: 4px 0 0 0;
+}
+
+.jobpost-content .details > span,
+.profile-content .details > span {
+	display: inline-block;
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: 400;
+	color: #444;
+	margin: 0;
+}
+
+.profile-content .details > span.name {
+	text-transform: capitalize;
+}
+
+.jobpost-content .details > span:first-child:after,
+.profile-content .details > span:first-child:after {
+	content: '|';
+	display: inline-block;
+	margin: 0 8px;
+}
+
+.jobpost-content .details > span:only-child:after,
+.profile-content .details > span:only-child:after {
+	display: none;
+}
+
+.jobpost-content > p,
+.profile-content > p {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: break-word;
+	margin: 8px 0 0 0;
+	overflow: hidden;
+}
+
+/*  Advert Details  */
+.jobpost-details .overview,
+.profile-details .overview,
+.projection-details .overview {
+	height: 64px;
+	padding: 20px 10px 0 10px;
+}
+
+.jobpost-details .overview h2,
+.profile-details .overview h2,
+.projection-details .overview h2 {
+	text-transform: capitalize;
+}
+
+.jobpost-details .contents,
+.profile-details .contents {
+	margin-top: -64px;
+	padding-top: 64px;
+}
+
+.jobposts-detailed,
+.profiles-detailed {
+	padding: 0 20px;
+}
+
+.projection-detailed {
+	position: relative;
+	margin-top: -20px;
+	padding: 0 0 40px 0;
+}
+
+.jobposts-detailed > p,
+.profiles-detailed > p {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 20px;
+	margin-top: 10px;
+}
+
+.jobposts-detailed > p:first-child,
+.profiles-detailed > p:first-child {
+	margin-top: 0px;
+}
+
+.projection-details .contents p.note {
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+	color: #444;
+	margin-bottom: 16px;
+	padding: 0 16px;
+}
+
+
+/*  Projection Time Direction  */
+.overview ul.time-dir {
+	position: absolute;
+	top: 23px;
+	right: 10px;
+}
+
+.overview ul.time-dir.past > li:last-child,
+.overview ul.time-dir.future > li:first-child {
+	display: none;
+}
+
+.overview ul.time-dir.past > li:first-child,
+.overview ul.time-dir.future > li:last-child {
+	display: inline-block;
+}
+
+.overview ul.time-dir > li > a {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 22px;
+	text-decoration: none;
+	color: #333;
+	vertical-align: top;
+}
+
+.overview ul.time-dir > li > a:hover {
+	color: #4584c4;
+}
+
+.overview ul.time-dir > li > a > i {
+	font-size: 20px;
+	line-height: 22px;
+	vertical-align: top;
+}
+
+.overview ul.time-dir > li:first-child > a > i {
+	margin-right: 6px;
+}
+
+.overview ul.time-dir > li:last-child > a > i {
+	margin-left: 6px;
+}
+
+
+/*  Overview  */
+.overview .geodata > li {
+	min-height: 75px;
+	padding: 10px 12px;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #ccc;
+}
+
+.overview .geodata > li:first-child {
+	color: #3170a3;
+	padding-left: 0;
+	border-left: none;
+}
+
+.overview .geodata > li:last-child {
+	color: #f9a100;
+	padding-right: 0;
+	border-right: none;
+}
+
+.overview .geodata > li > .block {
+	position: relative;
+}
+
+.overview .geodata > li > .block > span,
+.overview .geodata > li > .block > strong {
+	font-size: 16px;
+	line-height: 24px;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, .8);
+}
+
+.overview .geodata > li:first-child > .block > i,
+.overview .geodata > li:last-child > .block > i {
+	width: auto;
+	font-size: 18px;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, .8);
+}
+
+.overview .geodata > li > .block > p {
+	font-size: 12px;
+	line-height: 16px;
+	text-transform: uppercase;
+}
+
+.overview .geodata > li > hr,
+.overview .geodata > li > .meter {
+	bottom: 33px;
+}
+
+.overview .geodata > li > hr {
+	background-color: #d8d8d8;
+}
+
+.overview .geodata > li:first-child > hr {
+	margin-right: 12px;
+}
+
+.overview .geodata > li:last-child > hr {
+	margin-left: 12px;
+}
+
+.overview .geodata > li > .meter {
+	margin: 0 12px;
+}
+
+
+/*  Overview | Expanded  */
+.overview.expanded h2 {
+	font-size: 18px;
+	margin-bottom: 14px;
+}
+
+.overview.expanded h2:before {
+	display: block;
+}
+
+.overview.expanded > a.backbtn,
+.overview.expanded > a.nextbtn {
+	top: 20px;
+	width: 28px;
+	font-size: 22px;
+	line-height: 28px;
+}
+
+.overview.expanded .geodata > li {
+	min-height: 110px;
+}
+
+.overview.expanded .geodata > li > .block > span,
+.overview.expanded .geodata > li > .block > strong {
+	font-size: 22px;
+}
+
+.overview.expanded .geodata > li:first-child > .block > i,
+.overview.expanded .geodata > li:last-child > .block > i {
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	width: 40px;
+	font-size: 34px;
+	line-height: 40px;
+	margin: 0 0 0 -20px;
+}
+
+.overview.expanded .geodata > li > .block > p {
+	margin-top: 50px;
+}
+
+
+/*  Separators  */
+.overview.expanded .geodata > li > hr {
+	display: none;
+}
+
+.overview.expanded .geodata > li > .meter {
+	height: 16px;
+	margin: 10px 12px;
+}
+
+.overview.expanded .geodata > li > .meter,
+.overview.expanded .geodata > li > .meter > .fill {
+	border-radius: 10px;
+	box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, .8), inset 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+
+/*
+ *  Results Options
+ */
+
+.options-container {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	font-size: 0;
+	text-align: right;
+	margin-top: -50px;
+	padding: 0 10px;
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, .2);
+	background-color: #f3f3f3;
+	z-index: 8;
+	transition: margin-top 400ms ease-in-out;
+}
+
+.options-container.show {
+	margin-top: 0;
+}
+
+/*  Toggle Salary  */
+.options-container > .toggle-salary {
+	display: inline-block;
+	position: relative;
+	width: 46%;
+	font-family: Roboto, sans-serif, 'Helvetica Neue', Arial;
+	text-align: center;
+	padding: 10px 0 8px 0;
+	vertical-align: top;
+}
+
+.options-container > .toggle-salary > span {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	min-width: 88px;
+	font-size: 14px;
+	line-height: 22px;
+	text-align: left;
+	color: #666;
+}
+
+.options-container > .toggle-salary > span:first-child {
+	text-align: right;
+}
+
+.options-container > .toggle-salary input[type="checkbox"] {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+.options-container > .toggle-salary input[type="checkbox"] + label {
+	display: inline-block;
+	position: relative;
+	width: 40px;
+	height: 22px;
+	text-indent: -9999px;
+	margin: 0 8px;
+	padding: 0;
+	border-radius: 100px;
+	vertical-align: top;
+	background-color: #4a9258;
+	cursor: pointer;
+}
+
+.options-container > .toggle-salary input[type="checkbox"] + label:after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color: #fff;
+	transition: 0.3s;
+}
+
+.options-container > .toggle-salary input[type="checkbox"]:checked + label:after {
+	left: calc(100% - 3px);
+	transform: translateX(-100%);
+}
+
+/*  Options Dropdown  */
+.options-container > .options-dropdown {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	min-width: 27%;
+	height: 40px;
+	font-size: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.options-dropdown > li {
+	display: inline-block;
+	position: relative;
+	margin: 0 0 0 20px;
+}
+
+.options-dropdown > li > a,
+.options-dropdown > li > h6 {
+	display: block;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 40px;
+	text-decoration: none;
+	color: #888;
+	padding: 0;
+}
+
+.options-dropdown > li:hover > a,
+.options-dropdown > li:hover > h6 {
+	color: #282828;
+}
+
+.options-dropdown > li.with-child > a > i,
+.options-dropdown > li.with-child > h6 > i {
+	width: 22px;
+	font-size: 22px;
+	line-height: 40px;
+	vertical-align: top;
+}
+
+.options-dropdown > li.with-child > a > i.open,
+.options-dropdown > li.with-child > h6 > i.open,
+.options-dropdown > li.with-child:hover > a > i.close,
+.options-dropdown > li.with-child:hover > h6 > i.close {
+	display: inline-block;
+}
+
+.options-dropdown > li.with-child > a > i.close,
+.options-dropdown > li.with-child > h6 > i.close,
+.options-dropdown > li.with-child:hover > a > i.open,
+.options-dropdown > li.with-child:hover > h6 > i.open {
+	display: none;
+}
+
+.options-dropdown > li.with-child > ul.child-list {
+	display: none;
+	position: absolute;
+	top: 40px;
+	right: -2px;
+	width: auto;
+	min-width: 120px;
+	text-align: left;
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-shadow: 0 3px 6px 0px rgba(0, 0, 0, .3);
+}
+
+.options-dropdown > li.with-child:hover > ul.child-list {
+	display: block;
+	z-index: 99;
+}
+
+.options-dropdown > li.with-child > ul.child-list > li {
+	display: block;
+	position: relative;
+	border-top: 1px solid #ddd;
+	background-color: #ffffff;
+}
+
+.options-dropdown > li.with-child > ul.child-list > li > a {
+	display: block;
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: 300;
+	color: #888;
+	text-decoration: none;
+	padding: 6px 14px 6px 10px;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.options-dropdown > li.with-child > ul.child-list > li > a > i {
+	display: inline-block;
+	width: 22px;
+	font-size: 20px;
+	line-height: 22px;
+	margin-right: 6px;
+	vertical-align: top;
+}
+
+.options-dropdown > li.with-child > ul.child-list > li > a:hover {
+	color: #282828;
+	background-color: #ececec;
+}
+
+
+/*
+ *  Container position variants
+ */
+
+.overview {
+	height: 122px;
+}
+
+.overview.expanded {
+	height: 181px;
+}
+
+.overview + .options-container {
+	top: 82px;
+}
+
+.overview + .options-container.show {
+	top: 122px;
+}
+
+.overview.expanded + .options-container {
+	top: 140px;
+}
+
+.overview.expanded + .options-container.show {
+	top: 180px;
+}
+
+.overview + .options-container ~ .contents {
+	margin-top: -122px;
+	padding-top: 122px;
+}
+
+.overview + .options-container.show ~ .contents {
+	margin-top: -122px;
+	padding-top: 162px;
+}
+
+.overview.expanded + .options-container ~ .contents {
+	margin-top: -180px;
+	padding-top: 180px;
+}
+
+.overview.expanded + .options-container.show ~ .contents {
+	margin-top: -180px;
+	padding-top: 220px;
+}
+
+.ext-overview {
+	height: 64px;
+}
+
+.ext-overview + .contents,
+.ext-overview + .options-container ~ .contents {
+	margin-top: -64px;
+	padding-top: 64px;
+	background-color: #f9f9f9;
+	z-index: 8;
+}
+
+.candidates-wrapper .ext-overview + .contents,
+.candidates-wrapper .ext-overview + .options-container ~ .contents {
+	background-color: #fff;
+}
+
+.ext-overview + .options-container.show ~ .contents {
+	margin-top: -64px;
+	padding-top: 104px;
+}
+
+
+/*
+ *  Ext transitions
+ */
+
+#ext .container {
+	position: absolute;
+	width: 100%;
+	z-index: 0;
+	transform: translateX(-100%);
+	transition:
+		transform 400ms ease-in-out,
+		z-index 0ms 400ms;
+}
+
+#ext .container:before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background-color: #000;
+	z-index: 0;
+	transition: 
+		opacity 400ms ease-in-out,
+		z-index 0ms 400ms;
+}
+
+#ext.jobposts .container.jobposts-wrapper:before,
+#ext.details .container.jobpost-details:before,
+#ext.profiles .container.profiles-wrapper:before,
+#ext.details .container.profile-details:before,
+#ext.candidates .container.candidates-wrapper:before,
+#ext.details .container.projection-details:before,
+#ext.wammee .container.wammee-wrapper:before {
+	opacity: .8;
+	z-index: 9;
+	transition:
+		z-index 0ms,
+		opacity 400ms ease-in-out;
+}
+
+#ext.jobposts .container.jobposts-wrapper,
+#ext.details .container.jobpost-details,
+#ext.profiles .container.profiles-wrapper,
+#ext.details .container.profile-details,
+#ext.candidates .container.candidates-wrapper,
+#ext.details .container.projection-details,
+#ext.wammee .container.wammee-wrapper {
+	z-index: 6;
+	transform: translateX(0%);
+	transition:
+		z-index 0ms,
+		transform 400ms ease-in-out;
+}
+
+#ext .container .options-container {
+	z-index: 9;
+}
+
+
+/*
+ *  No results
+ */
+
+.msg-box {
+	margin: 24px 48px;
+	padding: 40px 30px;
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(0,0,0,.14);
+}
+
+.msg-box > p {
+	display: inline-block;
+	width: 100%;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+	color: #666;
+	margin: 0 0 20px 0;
+}
+
+.msg-box > p:last-child {
+	margin: 0;
+}
+
+
+/*
+ *  Charts Perspective Switch
+ */
+
+#perspective-wrap .highcharts-container {
+	margin: 0 auto 22px auto;
+}
+
+#perspective-switch {
+	position: relative;
+	width: 100%;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 22px;
+	text-align: center;
+	color: #444;
+	padding: 0 0 14px 0;
+}
+
+#perspective-switch > span {
+	display: inline-block;
+	position: relative;
+	font-weight: 400;
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+#perspective-switch > span:last-child {
+	margin-right: 0;
+}
+
+#perspective-switch > span.active {
+	color: #2096f3;
+	cursor: default;
+}
+
+
+/*
+ *  Demographics Breakdown
+ */
+
+#demographics {
+	display: block;
+	position: relative;
+	font-size: 0;
+	margin: 0 auto 22px auto;
+}
+
+.gender-breakdown,
+.experience-breakdown {
+	display: inline-block;
+	position: relative;
+	width: 50%;
+	font-size: 0;
+	text-align: center;
+	vertical-align: top;
+	padding: 0 10px;
+}
+
+
+/*  Gender block  */
+.gender-breakdown {
+	height: 200px;
+	margin: 0;
+}
+
+.experience-breakdown {
+	height: 180px;
+	margin: 0 0 20px 0;
+}
+
+.gender-breakdown > h3,
+.experience-breakdown > h3 {
+	display: block;
+	position: relative;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+}
+
+.gender-breakdown > h3 {
+	padding: 0 0 14px 0px;
+}
+
+.experience-breakdown > h3 {
+	padding: 0;
+}
+
+.gender-block,
+.data {
+	display: inline-block;
+	position: relative;
+	height: 166px;
+	font-size: 0;
+	vertical-align: top;
+}
+
+.gender-block {
+	background-color: #d3d3d3;
+}
+
+.gender-block.male > .fill {
+	background-color: #765fbb;
+}
+
+.gender-block.female > .fill {
+	background-color: #00c4aa;
+}
+
+.gender-block > .fill {
+	display: block;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.gender-block > img {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	height: 100%;
+}
+
+.data {
+	width: 100px;
+}
+
+.data .data-male,
+.data .data-female {
+	position: relative;
+	width: 100%;
+	height: 68px;
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 24px;
+	text-align: center;
+	padding: 14px 0;
+}
+
+.data .data-male {
+	color: #765fbb;
+}
+
+.data .data-female {
+	color: #00c4aa;
+}
+
+.data .data-male:after,
+.data .data-female:after {
+	display: block;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 1px;
+	line-height: 16px;
+	color: #333;
+}
+
+.data .data-male:after {
+	content: 'male';
+}
+
+.data .data-female:after {
+	content: 'female';
+}
+
+
+/*  Experience block  */
+.exp-block {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 132px;
+	font-size: 0;
+	vertical-align: top;
+	margin-top: 28px;
+}
+
+.exp-block:after,
+.exp-block > .row > span {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.exp-block:after {
+	bottom: -18px;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 1px;
+	line-height: 18px;
+	color: #333;
+}
+
+.exp-block.jr:after {
+	content: '0-3 years';
+}
+
+.exp-block.md:after {
+	content: '4-7 years';
+}
+
+.exp-block.sr:after {
+	content: '8+ years';
+}
+
+.exp-block > .row {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.exp-block > .row > span {
+	top: -26px;
+	font-size: 22px;
+	line-height: 26px;
+}
+
+.exp-block.jr > .row > span {
+	color: #765fbb;
+}
+
+.exp-block.md > .row > span {
+	color: #4584c4;
+}
+
+.exp-block.sr > .row > span {
+	color: #00C4AA;
+}
+
+.exp-block > .row > .col {
+	display: block;
+	width: 40px;
+	height: 100%;
+	margin: 0 auto;
+	border-radius: 3px 3px 0 0;
+}
+
+.exp-block.jr > .row > .col {
+	background-color: #765fbb;
+}
+
+.exp-block.md > .row > .col {
+	background-color: #4584c4;
+}
+
+.exp-block.sr > .row > .col {
+	background-color: #00C4AA;
+}
+
+
+/*  Ethnicity block  */
+#ethnicity-wrap {
+	width: 100%;
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 0 48px;
+}
+
+#ethnicity-wrap .highcharts-container {
+	margin: 0 auto 14px auto;
+}
+
+.highcharts-label .tree-label > span {
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	text-align: center;
+}
+
+.highcharts-label .tree-label > span.value {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+
+/* Chart Tooltip */
+.chart-tooltip {
+	display: inline-block;
+	position: relative;
+	width: auto;
+}
+
+.chart-tooltip big {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
+.chart-tooltip span {
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	margin: 0 5px 2px 0;
+	border-radius: 50%;
+}
+
+.chart-tooltip b {
+	font-weight: bold;
+}
+
+
+/*  Insight Lists  */
+ul.data-list {
+	display: table;
+	width: 96%;
+	min-width: 610px;
+	margin: 0 auto;
+	border: 1px solid #d3d3d3;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+ul.data-list > li.head {
+	background-color: #333;
+}
+
+ul.data-list > li.head > span {
+	font-weight: 400;
+	color: #fff;
+	border-bottom: none;
+}
+
+ul.data-list > li {
+	display: table-row;
+	height: auto;
+}
+
+ul.data-list > li > span {
+	display: table-cell;
+	position: relative;
+	min-width: 90px;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 20px;
+	text-align: center;
+	color: #000;
+	vertical-align: middle;
+	border-left: 1px solid #d3d3d3;
+	border-bottom: 1px solid #d3d3d3;
+	padding: 10px 5px 9px 5px;
+}
+
+ul.data-list > li:last-child > span {
+	border-bottom: none;
+}
+
+ul.data-list > li > span:first-child {
+	border-left: none;
+}
+
+ul.data-list > li > span.name,
+ul.data-list > li > span.title {
+	text-align: left;
+	text-transform: capitalize;
+}
+
+ul.data-list > li > span.name {
+	min-width: 148px;
+}
+
+ul.data-list > li > span.title {
+	min-width: 410px;
+}
+
+ul.data-list > li > span.gender {
+	min-width: 100px;
+}
+
+
+/*
+ *  Projections
+ */
+
+.diagram {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: auto;
+}
+
+.Treant > .node,
+.Treant > .pseudo {
+	display: block;
+	position: absolute;
+}
+
+.Treant.loaded .node,
+.Treant.loaded .pseudo {
+	visibility: visible;
+}
+
+.Treant > .pseudo {
+	width: 0;
+	height: 0;
+	padding: 0;
+	border: none;
+}
+
+.diagram {
+	display: block;
+	width: 980px;
+	margin: 0 auto;
+}
+
+.position {
+	width: 90px;
+	font-size: 12px;
+	line-height: 14px;
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+.position .node-name,
+.position .node-desc {
+	text-align: center;
+}
+
+.position .node-name {
+	text-transform: capitalize;
+	color: #4584c4;
+}
+
+.position .node-desc {
+	color: #999;
+	margin-top: 4px;
+}
+
+.position a.collapse-switch {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+#perspective-list span.title small {
+	float: right;
+}
+
+a.projections {
+	margin-right: 10px;
+}
+
+a.projections > i {
+	font-size: 16px;
+	line-height: 20px;
+	text-decoration: none;
+	vertical-align: top;
+	color: #3170a3;
+	transform: rotate(-90deg);
+}
+
+
+/*
+ *  Wammee
+ */
+
+.wammee-wrapper .ext-overview img {
+	display: block;
+	width: auto;
+	height: 34px;
+	margin: 0 auto;
+}
+
+.wammee-wrapper h2 {
+	display: block;
+	position: relative;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 26px;
+	text-align: center;
+	margin: 18px 0 0 0;
+}
+
+.wammee-wrapper h2 > strong,
+.wammee-wrapper small > strong {
+	font-weight: 500;
+	color: #e02629;
+}
+
+.wammee-wrapper small {
+	display: block;
+	position: relative;
+	font-size: 13px;
+	font-weight: 300;
+	line-height: 16px;
+	text-align: center;
+}
+
+.wammee-wrapper form {
+	display: block;
+	position: relative;
+	width: 620px;
+	margin: 20px auto;
+}
+
+.wammee-wrapper form .custom-check > span {
+	text-transform: none;
+}
+
+
+/*  Toggle Button  */
+.toggle-btn {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: auto;
+	height: auto;
+	padding: 13px 10px;
+	box-sizing: content-box;
+	cursor: pointer;
+}
+
+
+/*  Toggle Button | Icon Closed  */
+.toggle-btn > .toggle-icon {
+	position: relative;
+	width: 18px;
+	height: 12px;
+	margin: 0;
+	padding: 0;
+	-webkit-transform: rotate(0deg);
+	   -moz-transform: rotate(0deg);
+		 -o-transform: rotate(0deg);
+			transform: rotate(0deg);
+	-webkit-transition: .5s ease-in-out;
+	   -moz-transition: .5s ease-in-out;
+		 -o-transition: .5s ease-in-out;
+			transition: .5s ease-in-out;
+}
+
+.toggle-btn > .toggle-icon > span {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #333;
+	border-radius: 2px;
+	opacity: 1;
+	-webkit-transform: rotate(0deg);
+	   -moz-transform: rotate(0deg);
+		 -o-transform: rotate(0deg);
+			transform: rotate(0deg);
+	-webkit-transition: .25s ease-in-out;
+	   -moz-transition: .25s ease-in-out;
+		 -o-transition: .25s ease-in-out;
+			transition: .25s ease-in-out;
+}
+
+.toggle-btn > .toggle-icon > span:nth-child(1) {
+	top: 0px;
+}
+
+.toggle-btn > .toggle-icon > span:nth-child(2),
+.toggle-btn > .toggle-icon > span:nth-child(3) {
+	top: 5px;
+}
+
+.toggle-btn> .toggle-icon > span:nth-child(4) {
+	top: 10px;
+}
+
+
+/*  Toggle Button | Icon Opened  */
+.open > .toggle-btn > .toggle-icon > span:nth-child(1) {
+	top: 8px;
+	left: 50%;
+	width: 0%;
+}
+
+.open > .toggle-btn > .toggle-icon > span:nth-child(2) {
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+		 -o-transform: rotate(45deg);
+			transform: rotate(45deg);
+}
+
+.open > .toggle-btn > .toggle-icon > span:nth-child(3) {
+	-webkit-transform: rotate(-45deg);
+	   -moz-transform: rotate(-45deg);
+		 -o-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+}
+
+.open > .toggle-btn > .toggle-icon > span:nth-child(4) {
+	top: 8px;
+	left: 50%;
+	width: 0%;
+}

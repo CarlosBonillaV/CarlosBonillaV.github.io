@@ -1,0 +1,14 @@
+<script type="text/x-handlebars-template" name="part_list_item" partial-name="part_list_item">
+	<li data-sid="{{searchId}}">
+		<label class="custom-check" for="{{searchId}}">
+			<input type="checkbox" name="favorites[]" id="{{searchId}}" value="{{searchId}}">
+			<div class="check-indicator"></div>
+			<span>{{searchName}}</span>
+		</label>
+
+		<div class="actions">
+			<a href="#" class="load"><i class="material-icons">file_download</i></a>
+			<a href="#" class="remove"><i class="material-icons">delete</i></a>
+		</div>
+	</li>
+</script>

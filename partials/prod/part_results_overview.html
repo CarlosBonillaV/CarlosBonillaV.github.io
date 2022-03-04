@@ -1,0 +1,12 @@
+<script type="text/x-handlebars-template" name="part_results_overview" partial-name="part_results_overview">
+	<div id="result-item" class="overview expanded">
+		{{#ifMatches levelOpts toMatch='isFirst'}}
+		<a href="#" class="backbtn" data-target="search"><i class="material-icons">keyboard_arrow_left</i></a>
+		{{else}}
+		<a href="#" class="backbtn" data-target="results"><i class="material-icons">keyboard_arrow_left</i></a>
+		{{/ifMatches}}
+		<h2>{{location}}</h2>
+
+		{{> part_results_item}}
+	</div>
+</script>

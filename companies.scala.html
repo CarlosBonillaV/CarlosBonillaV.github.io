@@ -1,0 +1,41 @@
+@(userType: Int, alertCode: Int, uuid: String)
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<title>Horsefly | Powered by JobsTheWord</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" sizes="32x32" href="https://s3.eu-west-2.amazonaws.com/horsefly-web/favicon/favicon-32x32.png?v=1646348106719">
+		<link rel="icon" type="image/png" sizes="96x96" href="https://s3.eu-west-2.amazonaws.com/horsefly-web/favicon/favicon-96x96.png?v=1646348106719">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://s3.eu-west-2.amazonaws.com/horsefly-web/favicon/favicon-16x16.png?v=1646348106719">
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' />
+		<link rel="stylesheet" href='https://api.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' />
+		<link rel="stylesheet" href="https://s3.eu-west-2.amazonaws.com/horsefly-web/css/main.min.css?v=1646348106719"/>
+
+		<script>
+			window.version=1646348106719;
+			window.notAlone=@alertCode;
+			window.uuid='@uuid';
+		</script>
+	</head>
+
+	<body>
+		<div id="horsefly-app"></div>
+
+		<div id="modal" role="dialog" tabindex="-1" aria-hidden="true" class="m-m"></div>
+
+		<div class="backdrop"></div>
+
+		<script src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/vendor/jquery-3.2.1.min.js"></script>
+		<script src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/vendor/LAB.min.js"></script>
+		<script src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/dist/uad.min.js?v=1646348106719"></script>
+		<script src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/startup.min.js?v=1646348106719"></script>
+		<script async src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/vendor/tinymce/tinymce.min.js?v=1646348106719"></script>
+		<script async src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/vendor/html2canvas.min.js?v=1646348106719"></script>
+		<script async src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/vendor/raphael.js?v=1646348106719"></script>
+		<script async src="https://s3.eu-west-2.amazonaws.com/horsefly-web/js/vendor/Treant.js?v=1646348106719"></script>
+	</body>
+</html>

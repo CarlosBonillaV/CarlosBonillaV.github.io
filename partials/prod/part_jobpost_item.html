@@ -1,0 +1,16 @@
+<script type="text/x-handlebars-template" name="part_jobpost_item" partial-name="part_jobpost_item">
+	<div class="jobpost-item">
+		<a href="#" class="jobpost-title" data-jobpost="{{id}}">{{title}}</a>
+
+		<div class="jobpost-content">
+			<div class="details">
+				<span>{{company}}</span>
+				{{#if salary}}
+				<span>{{numFormat salary entity=currency}}</span>
+				{{/if}}
+			</div>
+
+			<p>{{content}}</p>
+		</div>
+	</div>
+</script>
